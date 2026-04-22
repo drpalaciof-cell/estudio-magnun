@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estudio Jurídico Magnun | Formosa, Argentina</title>
+  <meta name="description" content="Estudio Jurídico Magnun, Formosa. Especialistas en Derecho Penal, Civil, Laboral, Comercial y de Familia. Saavedra 248 Altos, Oficina 14.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{--black:#0a0a0a;--white:#fafafa;--gl:#f2f0eb;--gm:#c8c6c0;--gd:#4a4845;--serif:'Playfair Display',Georgia,serif;--sans:'DM Sans',sans-serif;}
+    body{font-family:var(--sans);background:var(--white);color:var(--black);overflow-x:hidden}
+
+    /* NAV */
+    nav{position:sticky;top:0;z-index:200;background:rgba(250,250,250,0.97);backdrop-filter:blur(6px);border-bottom:0.5px solid #ddd;padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:58px}
+    .logo-wrap{display:flex;flex-direction:column}
+    .logo-main{font-family:var(--serif);font-size:19px;font-weight:700;letter-spacing:0.06em;color:var(--black);line-height:1}
+    .logo-sub{font-family:var(--sans);font-size:9px;font-weight:400;letter-spacing:0.2em;color:var(--gd);text-transform:uppercase;margin-top:2px}
+    .nav-links{display:flex;gap:2rem;list-style:none}
+    .nav-links a{font-size:12px;font-weight:400;letter-spacing:0.05em;color:var(--gd);text-decoration:none;transition:color .2s}
+    .nav-links a:hover{color:var(--black)}
+    .nav-btns{display:flex;gap:.5rem}
+    .nbtn{font-size:11px;font-weight:500;letter-spacing:0.07em;padding:7px 14px;cursor:pointer;border:0.5px solid #ccc;background:transparent;color:var(--gd);transition:all .2s;font-family:var(--sans)}
+    .nbtn:hover{border-color:var(--black);color:var(--black)}
+    .nbtn.dark{background:var(--black);color:var(--white);border-color:var(--black)}
+    .nbtn.dark:hover{opacity:.8}
+    .page{display:none}.page.active{display:block}
+
+    /* HERO — sin panel derecho */
+    .hero{min-height:88vh;display:flex;align-items:center;background:var(--black);padding:5rem 3.5rem}
+    .htag{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#777;margin-bottom:1.8rem}
+    .htitle{font-family:var(--serif);font-size:clamp(2.4rem,4vw,4rem);line-height:1.1;color:var(--white);margin-bottom:1.4rem;font-weight:700;max-width:700px}
+    .htitle em{font-style:italic;color:#aaa}
+    .hsub{font-size:15px;line-height:1.75;color:#777;max-width:500px;margin-bottom:2.5rem;font-weight:300}
+    .hbtns{display:flex;gap:.8rem;flex-wrap:wrap}
+    .hbtn1{background:var(--white);color:var(--black);padding:12px 28px;font-size:12px;font-weight:500;letter-spacing:.06em;border:none;cursor:pointer;font-family:var(--sans)}
+    .hbtn1:hover{opacity:.85}
+    .hbtn2{background:transparent;color:var(--white);padding:11px 28px;font-size:12px;border:0.5px solid #444;cursor:pointer;transition:border-color .2s;font-family:var(--sans)}
+    .hbtn2:hover{border-color:#888}
+
+    /* AREAS */
+    .areas-sec{background:var(--gl);padding:4.5rem 3.5rem}
+    .stag{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gd);margin-bottom:.8rem;font-weight:500}
+    .stitle{font-family:var(--serif);font-size:clamp(1.7rem,2.8vw,2.4rem);font-weight:700;margin-bottom:2.5rem}
+    .agrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:1px;background:#ccc}
+    .acard{background:var(--white);padding:1.8rem 1.4rem;cursor:default;transition:background .25s}
+    .acard:hover{background:var(--black)}
+    .acard:hover .aico,.acard:hover .aname,.acard:hover .adesc{color:var(--white)}
+    .aico{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gd);margin-bottom:.9rem;font-weight:500;transition:color .25s}
+    .aname{font-family:var(--serif);font-size:1.15rem;font-weight:700;margin-bottom:.4rem;transition:color .25s}
+    .adesc{font-size:12px;line-height:1.6;color:var(--gd);transition:color .25s;font-weight:300}
+
+    /* TEAM */
+    .team-sec{padding:4.5rem 3.5rem;background:var(--white)}
+    .tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:1.2rem;margin-top:2rem}
+    .tcard{border:0.5px solid #e0ddd7;overflow:hidden}
+    .tavatar{height:160px;background:var(--gl);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.8rem;font-weight:700;color:var(--gd)}
+    .tinfo{padding:.9rem}
+    .tname{font-weight:500;font-size:13px;margin-bottom:2px;line-height:1.3}
+    .tmp{font-size:10px;color:#aaa}
+
+    /* PROCESO */
+    .proceso-sec{background:var(--black);color:var(--white);padding:4.5rem 3.5rem}
+    .proceso-sec .stag{color:#555}
+    .proceso-sec .stitle{color:var(--white)}
+    .pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:1px;background:#1a1a1a;margin-top:2.5rem}
+    .pstep{background:var(--black);padding:1.8rem 1.4rem}
+    .pnum{font-family:var(--serif);font-size:2.2rem;font-weight:700;color:#222;line-height:1;margin-bottom:.9rem}
+    .ptitle{font-size:13px;font-weight:500;margin-bottom:.4rem;letter-spacing:.03em}
+    .pdesc{font-size:11px;line-height:1.65;color:#666;font-weight:300}
+
+    /* CONTACTO */
+    .contacto-sec{background:var(--gl);padding:4.5rem 3.5rem;display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start}
+    .ci h2{font-family:var(--serif);font-size:1.9rem;font-weight:700;margin-bottom:.9rem}
+    .ci p{font-size:13px;line-height:1.7;color:var(--gd);margin-bottom:1.8rem;font-weight:300}
+    .cdato{margin-bottom:1.1rem;padding-bottom:1.1rem;border-bottom:0.5px solid #ddd}
+    .cdato:last-child{border-bottom:none}
+    .dlbl{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gd);font-weight:500;margin-bottom:2px}
+    .dval{font-size:13px}
+    .cform{background:var(--white);padding:2.2rem;border:0.5px solid #ddd}
+    .frow{margin-bottom:1rem}
+    .frow label{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gd);margin-bottom:5px;font-weight:500}
+    .frow input,.frow select,.frow textarea{width:100%;padding:9px 11px;background:var(--gl);border:0.5px solid #d0cec8;font-family:var(--sans);font-size:12px;outline:none;color:var(--black)}
+    .frow input:focus,.frow select:focus,.frow textarea:focus{border-color:var(--black)}
+    .frow textarea{resize:vertical;min-height:80px}
+    .fsub{width:100%;padding:12px;background:var(--black);color:var(--white);font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.07em;border:none;cursor:pointer;text-transform:uppercase}
+    .fsub:hover{opacity:.8}
+
+    /* FOOTER */
+    .footer{background:var(--black);padding:1.8rem 3.5rem;display:flex;justify-content:space-between;align-items:center;border-top:0.5px solid #1a1a1a}
+    .flogo{font-family:var(--serif);font-size:14px;color:var(--white);font-weight:700;letter-spacing:.07em}
+    .fcopy{font-size:11px;color:#444;letter-spacing:.06em}
+    .flinks a{font-size:11px;color:#444;text-decoration:none;margin-left:1.2rem}
+    .flinks a:hover{color:#888}
+
+    /* LOGIN */
+    .login-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:900;align-items:center;justify-content:center}
+    .login-bg.open{display:flex}
+    .login-box{width:360px;max-width:92vw;padding:3rem 2.5rem;border:0.5px solid #222;background:#0d0d0d}
+    .login-logo{font-family:var(--serif);font-size:22px;font-weight:700;letter-spacing:.08em;color:var(--white);margin-bottom:4px}
+    .login-sub{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#555;margin-bottom:2.5rem}
+    .login-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#666;display:block;margin-bottom:6px;font-weight:500}
+    .login-input{width:100%;padding:11px 14px;background:#111;border:0.5px solid #2a2a2a;font-family:var(--sans);font-size:14px;color:var(--white);outline:none;margin-bottom:1.2rem;transition:border-color .2s}
+    .login-input:focus{border-color:#555}
+    .login-btn{width:100%;padding:12px;background:var(--white);color:var(--black);font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.08em;border:none;cursor:pointer;text-transform:uppercase}
+    .login-btn:hover{opacity:.85}
+    .login-error{font-size:12px;color:#ef4444;margin-top:.8rem;text-align:center;min-height:18px}
+
+    /* GESTOR */
+    .gestor{background:#f7f6f3;min-height:calc(100vh - 58px);padding:2rem 2.5rem}
+    .g-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;padding-bottom:1.2rem;border-bottom:0.5px solid #ddd}
+    .g-title{font-family:var(--serif);font-size:1.6rem;font-weight:700}
+    .g-sub{font-size:12px;color:var(--gd);margin-top:3px;display:flex;align-items:center;gap:6px}
+    .fb-status{width:7px;height:7px;border-radius:50%;background:#9ca3af;display:inline-block;flex-shrink:0}
+    .fb-status.ok{background:#16a34a}.fb-status.err{background:#dc2626}
+    .g-actions{display:flex;gap:.7rem;align-items:center}
+    .gbtn{font-size:12px;font-weight:500;padding:9px 16px;border:0.5px solid #ccc;background:var(--white);cursor:pointer;letter-spacing:.04em;transition:all .2s;font-family:var(--sans)}
+    .gbtn:hover{border-color:var(--black);background:var(--black);color:var(--white)}
+    .gbtn.primary{background:var(--black);color:var(--white);border-color:var(--black)}
+    .gbtn.primary:hover{opacity:.8}
+    .logout-btn{font-size:11px;color:#999;background:none;border:none;cursor:pointer;font-family:var(--sans);padding:0;transition:color .2s}
+    .logout-btn:hover{color:var(--black)}
+
+    /* STATS GESTOR */
+    .g-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem}
+    .gs{background:var(--white);border:0.5px solid #e5e3dd;padding:1.1rem 1.2rem}
+    .gs-n{font-family:var(--serif);font-size:1.8rem;font-weight:700;line-height:1}
+    .gs-l{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gd);margin-top:4px}
+
+    /* FILTROS */
+    .g-filters{display:flex;gap:.6rem;margin-bottom:1.2rem;flex-wrap:wrap;align-items:center}
+    .gf{font-size:11px;padding:6px 12px;border:0.5px solid #d0cec8;background:var(--white);cursor:pointer;letter-spacing:.04em;transition:all .2s;font-family:var(--sans)}
+    .gf.active,.gf:hover{background:var(--black);color:var(--white);border-color:var(--black)}
+    .g-search{flex:1;min-width:200px;padding:7px 12px;border:0.5px solid #d0cec8;background:var(--white);font-family:var(--sans);font-size:12px;outline:none}
+    .g-search:focus{border-color:var(--black)}
+
+    /* TABLA */
+    .g-table-wrap{background:var(--white);border:0.5px solid #e5e3dd;overflow-x:auto}
+    table{width:100%;border-collapse:collapse;font-size:12px;min-width:600px}
+    thead tr{background:var(--black);color:var(--white)}
+    thead th{padding:10px 12px;text-align:left;font-weight:500;letter-spacing:.06em;font-size:10px;text-transform:uppercase;white-space:nowrap}
+    tbody tr{border-bottom:0.5px solid #eee;transition:background .15s;cursor:pointer}
+    tbody tr:hover{background:#f7f6f3}
+    tbody td{padding:9px 12px;vertical-align:middle}
+    .exp-num{font-weight:500;font-family:var(--serif);font-size:13px}
+    .badge{display:inline-block;padding:3px 8px;font-size:10px;font-weight:500;letter-spacing:.05em;text-transform:uppercase}
+    .b-iniciado{background:#e8f0fe;color:#1a56db}
+    .b-tramite{background:#fff3cd;color:#856404}
+    .b-diligencias{background:#e0f2fe;color:#0369a1}
+    .b-resolucion{background:#d1fae5;color:#065f46}
+    .b-apelacion{background:#fce7f3;color:#9d174d}
+    .b-archivado{background:#f3f4f6;color:#4b5563}
+    .abog-chip{display:inline-flex;align-items:center;gap:5px;font-size:11px}
+    .abog-dot{width:22px;height:22px;border-radius:50%;background:var(--gl);display:inline-flex;align-items:center;justify-content:center;font-size:9px;font-weight:600;color:var(--gd);flex-shrink:0}
+    .ultimo-mov{font-size:11px;color:var(--gd);max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .loading-row td{text-align:center;padding:2.5rem;color:var(--gm);font-size:13px}
+    .row-actions{display:flex;gap:.4rem}
+    .ra{font-size:10px;padding:4px 8px;border:0.5px solid #d0cec8;background:transparent;cursor:pointer;transition:all .15s;font-family:var(--sans)}
+    .ra:hover{background:var(--black);color:var(--white);border-color:var(--black)}
+
+    /* MODAL CAUSA */
+    .modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:500;align-items:center;justify-content:center}
+    .modal-bg.open{display:flex}
+    .modal{background:var(--white);width:620px;max-width:96vw;max-height:92vh;overflow-y:auto;padding:2rem;position:relative}
+    .modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:18px;cursor:pointer;color:var(--gd);font-family:var(--sans)}
+    .modal-close:hover{color:var(--black)}
+    .modal-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;margin-bottom:1.5rem;padding-bottom:.8rem;border-bottom:0.5px solid #eee}
+    .mrow{margin-bottom:.9rem}
+    .mrow label{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gd);margin-bottom:4px;font-weight:500}
+    .mrow input,.mrow select,.mrow textarea{width:100%;padding:9px 11px;border:0.5px solid #d0cec8;font-family:var(--sans);font-size:13px;outline:none;background:#fafafa;color:var(--black)}
+    .mrow input:focus,.mrow select:focus,.mrow textarea:focus{border-color:var(--black);background:var(--white)}
+    .mrow textarea{resize:vertical;min-height:70px}
+    .mrow-2{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+    .msub{width:100%;padding:11px;background:var(--black);color:var(--white);font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.06em;border:none;cursor:pointer;margin-top:.5rem;text-transform:uppercase}
+    .msub:hover{opacity:.8}
+    .msub:disabled{opacity:.4;cursor:not-allowed}
+
+    /* PANEL DETALLE */
+    .detalle-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:500;align-items:flex-start;justify-content:flex-end}
+    .detalle-bg.open{display:flex}
+    .detalle-panel{background:var(--white);width:520px;max-width:100vw;height:100vh;overflow-y:auto;padding:2rem}
+    .dp-close{float:right;background:none;border:none;font-size:20px;cursor:pointer;color:var(--gd);font-family:var(--sans)}
+    .dp-close:hover{color:var(--black)}
+    .dp-exp{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gd);margin-bottom:.3rem}
+    .dp-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;margin-bottom:1.2rem;line-height:1.3}
+    .dp-grid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-bottom:1.4rem}
+    .dp-field{border:0.5px solid #eee;padding:.8rem}
+    .dp-fl{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gd);margin-bottom:3px}
+    .dp-fv{font-size:13px}
+    .dp-section{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gd);margin:1.2rem 0 .6rem;font-weight:500;border-bottom:0.5px solid #eee;padding-bottom:.4rem;display:flex;align-items:center;justify-content:space-between}
+    .dp-section-btn{font-size:10px;background:var(--black);color:var(--white);border:none;padding:4px 10px;cursor:pointer;font-family:var(--sans);letter-spacing:.04em}
+
+    /* DOCUMENTALES */
+    .doc-item{display:flex;align-items:center;gap:.8rem;padding:.7rem .8rem;background:#f7f6f3;border:0.5px solid #eee;margin-bottom:.5rem}
+    .doc-icon{width:32px;height:32px;background:var(--gl);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:var(--gd);flex-shrink:0;text-transform:uppercase}
+    .doc-info{flex:1;min-width:0}
+    .doc-nombre{font-size:12px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .doc-meta{font-size:10px;color:var(--gd);margin-top:2px}
+    .doc-link{font-size:11px;color:#1a56db;text-decoration:none;flex-shrink:0}
+    .doc-link:hover{text-decoration:underline}
+    .upload-area{border:1px dashed #d0cec8;padding:1.2rem;text-align:center;background:#fafafa;margin-bottom:.8rem}
+    .upload-area input[type=file]{display:none}
+    .upload-label{font-size:12px;color:var(--gd);cursor:pointer;display:block}
+    .upload-label:hover{color:var(--black)}
+    .upload-progress{font-size:11px;color:var(--gd);margin-top:.5rem;min-height:16px}
+
+    /* HISTORIAL */
+    .hist-item{padding:.8rem;border-left:2px solid #e5e3dd;margin-bottom:.5rem;background:#f7f6f3}
+    .hi-meta{font-size:10px;color:var(--gd);margin-bottom:3px}
+    .hi-text{font-size:12px;line-height:1.5}
+    .hi-tipo-doc{border-left-color:#1a56db}
+    .hi-tipo-prov{border-left-color:#065f46}
+    .hi-tipo-mov{border-left-color:#e5e3dd}
+
+    /* FORM MOVIMIENTO */
+    .update-form{background:#f7f6f3;padding:1.2rem;margin-top:.5rem}
+    .update-form label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gd);display:block;margin-bottom:4px;font-weight:500}
+    .update-form input,.update-form select,.update-form textarea{width:100%;padding:8px 10px;border:0.5px solid #d0cec8;font-family:var(--sans);font-size:12px;outline:none;background:var(--white);margin-bottom:.7rem;color:var(--black)}
+    .update-form textarea{resize:vertical;min-height:60px}
+
+    /* TOAST */
+    .toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);background:var(--black);color:var(--white);padding:10px 22px;font-size:12px;font-weight:500;letter-spacing:.05em;z-index:999;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap}
+    .toast.show{opacity:1}
+
+    @media(max-width:768px){
+      .hero{padding:4rem 2rem}
+      .contacto-sec{grid-template-columns:1fr}
+      .nav-links{display:none}
+      .g-stats{grid-template-columns:1fr 1fr}
+      .mrow-2{grid-template-columns:1fr}
+      .dp-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo-wrap">
+    <div class="logo-main">MAGNUN</div>
+    <div class="logo-sub">Estudio Jurídico</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#areas">Áreas</a></li>
+    <li><a href="#equipo">Equipo</a></li>
+    <li><a href="#proceso">Proceso</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <div class="nav-btns">
+    <button class="nbtn" onclick="showPage('sitio')">Sitio público</button>
+    <button class="nbtn dark" onclick="pedirLogin()">Ingresar</button>
+  </div>
+</nav>
+
+<!-- SITIO PÚBLICO -->
+<div id="page-sitio" class="page active">
+
+  <section class="hero">
+    <div>
+      <div class="htag">Estudio Jurídico · Formosa, Argentina</div>
+      <h1 class="htitle">Soluciones legales <em>de excelencia</em> para cada caso</h1>
+      <p class="hsub">Representamos a personas y empresas con compromiso, precisión y estrategia jurídica en todas las ramas del derecho.</p>
+      <div class="hbtns">
+        <button class="hbtn1" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Consulta sin cargo</button>
+        <button class="hbtn2" onclick="document.getElementById('areas').scrollIntoView({behavior:'smooth'})">Ver servicios</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="areas-sec" id="areas">
+    <div class="stag">Servicios</div>
+    <div class="stitle">Nuestras áreas de práctica</div>
+    <div class="agrid">
+      <div class="acard"><div class="aico">01</div><div class="aname">Derecho Penal</div><div class="adesc">Defensa y representación en causas penales, medidas cautelares, recursos y apelaciones.</div></div>
+      <div class="acard"><div class="aico">02</div><div class="aname">Derecho Civil</div><div class="adesc">Contratos, responsabilidad civil, sucesiones, derechos reales y litigios patrimoniales.</div></div>
+      <div class="acard"><div class="aico">03</div><div class="aname">Derecho Laboral</div><div class="adesc">Relaciones de trabajo, despidos, accidentes laborales, reclamos ante SECLO y juicio oral.</div></div>
+      <div class="acard"><div class="aico">04</div><div class="aname">Derecho Comercial</div><div class="adesc">Sociedades, contratos comerciales, concursos, quiebras y negociación empresarial.</div></div>
+      <div class="acard"><div class="aico">05</div><div class="aname">Derecho de Familia</div><div class="adesc">Divorcios, alimentos, régimen de comunicación, adopción, violencia familiar y tutelas.</div></div>
+    </div>
+  </section>
+
+  <section class="team-sec" id="equipo">
+    <div class="stag">El Equipo</div>
+    <div class="stitle">Nuestro equipo</div>
+    <div class="tgrid">
+      <div class="tcard"><div class="tavatar">ANR</div><div class="tinfo"><div class="tname">Dr. Alejandro N. Daniel Rojas</div><div class="tmp">MP 4531</div></div></div>
+      <div class="tcard"><div class="tavatar">EIF</div><div class="tinfo"><div class="tname">Dr. Edgardo Ignacio Flecha</div><div class="tmp">MP 4640</div></div></div>
+      <div class="tcard"><div class="tavatar">FMP</div><div class="tinfo"><div class="tname">Dr. Facundo Martin Palacio</div><div class="tmp">MP 4730</div></div></div>
+      <div class="tcard"><div class="tavatar">PSS</div><div class="tinfo"><div class="tname">Dr. Pablo Santiago Servín</div><div class="tmp">MP 4736</div></div></div>
+      <div class="tcard"><div class="tavatar">JPS</div><div class="tinfo"><div class="tname">Dr. Juan Pablo Sánchez</div><div class="tmp">MP 4482</div></div></div>
+      <div class="tcard"><div class="tavatar">VG</div><div class="tinfo"><div class="tname">Dr. Víctor Giménez</div><div class="tmp">Sin matrícula</div></div></div>
+    </div>
+  </section>
+
+  <section class="proceso-sec" id="proceso">
+    <div class="stag">Metodología</div>
+    <div class="stitle">Cómo trabajamos</div>
+    <div class="pgrid">
+      <div class="pstep"><div class="pnum">01</div><div class="ptitle">Consulta inicial</div><div class="pdesc">Analizamos tu caso gratuitamente y evaluamos la estrategia más adecuada.</div></div>
+      <div class="pstep"><div class="pnum">02</div><div class="ptitle">Diagnóstico jurídico</div><div class="pdesc">Elaboramos un informe con opciones, plazos y estimación de costos.</div></div>
+      <div class="pstep"><div class="pnum">03</div><div class="ptitle">Acuerdo de honorarios</div><div class="pdesc">Transparencia total antes de iniciar cualquier acción legal.</div></div>
+      <div class="pstep"><div class="pnum">04</div><div class="ptitle">Gestión activa</div><div class="pdesc">Seguimiento con informes periódicos y acceso permanente a tu abogado.</div></div>
+      <div class="pstep"><div class="pnum">05</div><div class="ptitle">Resolución</div><div class="pdesc">Buscamos la solución más favorable: acuerdo, sentencia o mediación.</div></div>
+    </div>
+  </section>
+
+  <section class="contacto-sec" id="contacto">
+    <div class="ci">
+      <div class="stag">Contacto</div>
+      <h2>Consultanos sin cargo</h2>
+      <p>Estamos disponibles para orientarte. La primera consulta es gratuita y sin compromiso.</p>
+      <div class="cdato"><div class="dlbl">Dirección</div><div class="dval">Saavedra 248 Altos, Oficina 14, Formosa</div></div>
+      <div class="cdato"><div class="dlbl">WhatsApp</div><div class="dval">+54 9 370 000-0000</div></div>
+      <div class="cdato"><div class="dlbl">Email</div><div class="dval">contacto@estudiomagnun.com.ar</div></div>
+      <div class="cdato"><div class="dlbl">Horarios</div><div class="dval">Lun–Vie 8:00 a 18:00 hs</div></div>
+    </div>
+    <div class="cform">
+      <div class="frow"><label>Nombre completo</label><input type="text" placeholder="Tu nombre y apellido"></div>
+      <div class="frow"><label>Teléfono / WhatsApp</label><input type="text" placeholder="+54 9 ..."></div>
+      <div class="frow"><label>Área de consulta</label>
+        <select><option>Seleccioná un área</option><option>Derecho Penal</option><option>Derecho Civil</option><option>Derecho Laboral</option><option>Derecho Comercial</option><option>Derecho de Familia</option></select>
+      </div>
+      <div class="frow"><label>Tu consulta</label><textarea placeholder="Describí brevemente tu situación..."></textarea></div>
+      <button class="fsub" onclick="this.textContent='¡Enviado! Te contactamos pronto.';this.style.background='#2a2a2a'">Enviar consulta</button>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="flogo">MAGNUN</div>
+    <div class="fcopy">© 2025 Estudio Jurídico Magnun · Formosa, Argentina</div>
+    <div class="flinks"><a href="#">Privacidad</a><a href="#">Términos</a></div>
+  </footer>
+
+</div><!-- /page-sitio -->
+
+<!-- LOGIN -->
+<div class="login-bg" id="login-bg">
+  <div class="login-box">
+    <div class="login-logo">MAGNUN</div>
+    <div class="login-sub">Acceso interno · Gestor de causas</div>
+    <label class="login-label">Contraseña</label>
+    <input class="login-input" type="password" id="login-pass" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()">
+    <button class="login-btn" onclick="doLogin()">Ingresar</button>
+    <div class="login-error" id="login-error"></div>
+  </div>
+</div>
+
+<!-- GESTOR DE CAUSAS -->
+<div id="page-gestor" class="page">
+  <div class="gestor">
+    <div class="g-header">
+      <div>
+        <div class="g-title">Gestor de Causas</div>
+        <div class="g-sub"><span class="fb-status" id="fb-dot"></span><span id="fb-label">Conectando...</span></div>
+      </div>
+      <div class="g-actions">
+        <button class="logout-btn" onclick="doLogout()">Cerrar sesión</button>
+        <button class="gbtn" onclick="renderGestor()">↺ Actualizar</button>
+        <button class="gbtn primary" onclick="openModal()">+ Nueva causa</button>
+      </div>
+    </div>
+
+    <div class="g-stats" id="gstats"></div>
+
+    <div class="g-filters">
+      <button class="gf active" onclick="filterBy('todos',this)">Todos</button>
+      <button class="gf" onclick="filterBy('Iniciado',this)">Iniciado</button>
+      <button class="gf" onclick="filterBy('En trámite',this)">En trámite</button>
+      <button class="gf" onclick="filterBy('Diligencias previas',this)">Diligencias</button>
+      <button class="gf" onclick="filterBy('Con resolución',this)">Con resolución</button>
+      <button class="gf" onclick="filterBy('En apelación',this)">En apelación</button>
+      <button class="gf" onclick="filterBy('Archivado',this)">Archivado</button>
+      <input class="g-search" type="text" placeholder="Buscar causa, cliente, juzgado..." oninput="busqueda=this.value;renderTabla()">
+    </div>
+
+    <div class="g-table-wrap">
+      <table>
+        <thead><tr>
+          <th>Expediente</th><th>Carátula</th><th>Área</th><th>Juzgado</th>
+          <th>Abogado</th><th>Estado</th><th>Último movimiento</th><th>Acciones</th>
+        </tr></thead>
+        <tbody id="gtbody"><tr class="loading-row"><td colspan="8">Cargando causas desde Firebase...</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL NUEVA/EDITAR CAUSA -->
+<div class="modal-bg" id="modal-bg">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-title" id="modal-titulo">Cargar nueva causa</div>
+    <div class="mrow-2">
+      <div class="mrow"><label>Nº de expediente</label><input type="text" id="m-exp" placeholder="Ej: 1234/2025"></div>
+      <div class="mrow"><label>Área del derecho</label>
+        <select id="m-area"><option>Derecho Penal</option><option>Derecho Civil</option><option>Derecho Laboral</option><option>Derecho Comercial</option><option>Derecho de Familia</option></select>
+      </div>
+    </div>
+    <div class="mrow"><label>Carátula / Nombre de la causa</label><input type="text" id="m-caratula" placeholder="Ej: García Juan c/ Empresa SA s/ Despido"></div>
+    <div class="mrow-2">
+      <div class="mrow"><label>Cliente</label><input type="text" id="m-cliente" placeholder="Nombre del cliente"></div>
+      <div class="mrow"><label>Juzgado / Tribunal</label><input type="text" id="m-juzgado" placeholder="Ej: Juzgado Civil Nº 2"></div>
+    </div>
+    <div class="mrow"><label>Abogado responsable</label>
+      <select id="m-abogado">
+        <option>Dr. Rojas (MP 4531)</option><option>Dr. Flecha (MP 4640)</option>
+        <option>Dr. Palacio (MP 4730)</option><option>Dr. Servín (MP 4736)</option>
+        <option>Dr. Sánchez (MP 4482)</option><option>Dr. Giménez</option>
+      </select>
+    </div>
+    <div class="mrow"><label>Observaciones iniciales</label><textarea id="m-obs" placeholder="Antecedentes, descripción de la causa..."></textarea></div>
+    <div class="mrow"><label>Cargado por</label><input type="text" id="m-quien" placeholder="Tu nombre o iniciales"></div>
+    <button class="msub" id="m-submit" onclick="guardarCausa()">Guardar causa</button>
+  </div>
+</div>
+
+<!-- PANEL DETALLE CAUSA -->
+<div class="detalle-bg" id="detalle-bg">
+  <div class="detalle-panel"><div id="dp-content"></div></div>
+</div>
+
+<!-- MODAL CONFIRMAR ELIMINACIÓN -->
+<div class="modal-bg" id="confirm-bg">
+  <div class="modal" style="max-width:420px">
+    <div class="modal-title" id="confirm-titulo">Confirmar eliminación</div>
+    <p id="confirm-texto" style="font-size:13px;color:var(--gd);line-height:1.6;margin-bottom:1.5rem"></p>
+    <div style="display:flex;gap:.8rem">
+      <button onclick="document.getElementById('confirm-bg').classList.remove('open')" style="flex:1;padding:10px;border:0.5px solid #ccc;background:transparent;font-family:var(--sans);font-size:12px;cursor:pointer">Cancelar</button>
+      <button id="confirm-btn" style="flex:1;padding:10px;border:none;background:#dc2626;color:white;font-family:var(--sans);font-size:12px;font-weight:500;cursor:pointer">Eliminar</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script>
+  /* ── CONFIG ── */
+  const PASS = 'Magnum248';
+  const CLOUDINARY_CLOUD = 'HACERdoqfmxvdf';
+  const CLOUDINARY_PRESET = 'magnun_docs';
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBk7qvN9xWPtBsfedNIGmEPOGALfTs7yak",
+    authDomain: "estudio-magnum.firebaseapp.com",
+    projectId: "estudio-magnum",
+    storageBucket: "estudio-magnum.firebasestorage.app",
+    messagingSenderId: "922209395216",
+    appId: "1:922209395216:web:a5cda6f0a529b12b9ee095"
+  };
+
+  const ESTADOS = ['Iniciado','En trámite','Diligencias previas','Con resolución','En apelación','Archivado'];
+  const BADGECLS = {'Iniciado':'b-iniciado','En trámite':'b-tramite','Diligencias previas':'b-diligencias','Con resolución':'b-resolucion','En apelación':'b-apelacion','Archivado':'b-archivado'};
+  const ABOGADOS = [
+    {siglas:'ANR',nombre:'Dr. Rojas (MP 4531)'},{siglas:'EIF',nombre:'Dr. Flecha (MP 4640)'},
+    {siglas:'FMP',nombre:'Dr. Palacio (MP 4730)'},{siglas:'PSS',nombre:'Dr. Servín (MP 4736)'},
+    {siglas:'JPS',nombre:'Dr. Sánchez (MP 4482)'},{siglas:'VG',nombre:'Dr. Giménez'}
+  ];
+
+  let db, causas = [], filtro = 'todos', busqueda = '', editingId = null;
+
+  /* ── LOGIN ── */
+  function pedirLogin() {
+    if (sessionStorage.getItem('magnun-auth') === 'ok') { showPage('gestor'); return; }
+    document.getElementById('login-pass').value = '';
+    document.getElementById('login-error').textContent = '';
+    document.getElementById('login-bg').classList.add('open');
+    setTimeout(() => document.getElementById('login-pass').focus(), 100);
+  }
+  function doLogin() {
+    if (document.getElementById('login-pass').value === PASS) {
+      sessionStorage.setItem('magnun-auth','ok');
+      document.getElementById('login-bg').classList.remove('open');
+      showPage('gestor');
+    } else {
+      document.getElementById('login-error').textContent = 'Contraseña incorrecta';
+      document.getElementById('login-pass').value = '';
+      document.getElementById('login-pass').focus();
+    }
+  }
+  function doLogout() {
+    sessionStorage.removeItem('magnun-auth');
+    showPage('sitio');
+    showToast('Sesión cerrada');
+  }
+
+  /* ── FIREBASE ── */
+  function initFirebase() {
+    try {
+      firebase.initializeApp(firebaseConfig);
+      db = firebase.firestore();
+      document.getElementById('fb-dot').className = 'fb-status ok';
+      document.getElementById('fb-label').textContent = 'Firebase conectado · Tiempo real';
+      db.collection('causas').orderBy('creadoEn','desc').onSnapshot(snap => {
+        causas = snap.docs.map(d => ({id:d.id,...d.data()}));
+        renderGestor();
+      }, err => {
+        document.getElementById('fb-dot').className = 'fb-status err';
+        document.getElementById('fb-label').textContent = 'Error: ' + err.message;
+      });
+    } catch(e) {
+      document.getElementById('fb-dot').className = 'fb-status err';
+      document.getElementById('fb-label').textContent = 'Error Firebase';
+    }
+  }
+
+  /* ── UTILS ── */
+  function showPage(p) {
+    document.querySelectorAll('.page').forEach(x => x.classList.remove('active'));
+    document.getElementById('page-'+p).classList.add('active');
+    window.scrollTo(0,0);
+    if (p === 'gestor' && !db) initFirebase();
+  }
+  function nowStr() {
+    const n = new Date();
+    return n.getDate().toString().padStart(2,'0')+'/'+(n.getMonth()+1).toString().padStart(2,'0')+'/'+n.getFullYear()+' '+n.getHours().toString().padStart(2,'0')+':'+n.getMinutes().toString().padStart(2,'0');
+  }
+  function abogSiglas(nombre) {
+    const a = ABOGADOS.find(x => x.nombre === nombre);
+    return a ? a.siglas : (nombre||'??').slice(0,2).toUpperCase();
+  }
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2800);
+  }
+  function ultimoMov(causa) {
+    const hist = causa.historia || [];
+    if (!hist.length) return '—';
+    const u = hist[hist.length-1];
+    return u.fecha + ' · ' + u.texto.slice(0,40) + (u.texto.length>40?'...':'');
+  }
+  function extIcon(nombre) {
+    const ext = (nombre||'').split('.').pop().toLowerCase();
+    if (['pdf'].includes(ext)) return 'PDF';
+    if (['jpg','jpeg','png','gif','webp'].includes(ext)) return 'IMG';
+    if (['doc','docx'].includes(ext)) return 'DOC';
+    if (['xls','xlsx'].includes(ext)) return 'XLS';
+    return ext.slice(0,3).toUpperCase()||'DOC';
+  }
+
+  /* ── RENDER ── */
+  function renderStats() {
+    const total = causas.length;
+    const activos = causas.filter(o => o.estado !== 'Archivado').length;
+    const docs = causas.reduce((a,c) => a + (c.documentos||[]).length, 0);
+    document.getElementById('gstats').innerHTML = `
+      <div class="gs"><div class="gs-n">${total}</div><div class="gs-l">Total causas</div></div>
+      <div class="gs"><div class="gs-n">${activos}</div><div class="gs-l">Causas activas</div></div>
+      <div class="gs"><div class="gs-n">${docs}</div><div class="gs-l">Documentos cargados</div></div>`;
+  }
+
+  function renderTabla() {
+    let lista = causas;
+    if (filtro !== 'todos') lista = lista.filter(o => o.estado === filtro);
+    if (busqueda) lista = lista.filter(o => (o.exp+o.caratula+o.juzgado+o.cliente).toLowerCase().includes(busqueda.toLowerCase()));
+    const tbody = document.getElementById('gtbody');
+    if (!lista.length) { tbody.innerHTML = '<tr class="loading-row"><td colspan="8">No hay causas con ese criterio</td></tr>'; return; }
+    tbody.innerHTML = lista.map(o => `
+      <tr onclick="openDetalle('${o.id}')">
+        <td><span class="exp-num">${o.exp||'—'}</span></td>
+        <td style="max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${o.caratula||''}">${o.caratula||'—'}</td>
+        <td style="font-size:11px;color:var(--gd)">${(o.area||'').replace('Derecho ','')}</td>
+        <td style="font-size:11px;color:var(--gd);max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${o.juzgado||'—'}</td>
+        <td><span class="abog-chip"><span class="abog-dot">${abogSiglas(o.abogado)}</span>${(o.abogado||'').split(' (')[0]}</span></td>
+        <td><span class="badge ${BADGECLS[o.estado]||'b-iniciado'}">${o.estado||'Iniciado'}</span></td>
+        <td><span class="ultimo-mov">${ultimoMov(o)}</span></td>
+        <td onclick="event.stopPropagation()"><div class="row-actions">
+          <button class="ra" onclick="openDetalle('${o.id}')">Ver</button>
+          <button class="ra" onclick="openModalEdit('${o.id}')">Editar</button>
+          <button class="ra" style="color:#dc2626;border-color:#fca5a5" onclick="confirmarEliminarCausa('${o.id}','${(o.caratula||'').replace(/'/g,'')  }')">Eliminar</button>
+        </div></td>
+      </tr>`).join('');
+  }
+
+  function renderGestor() { renderStats(); renderTabla(); }
+  function filterBy(f,btn) { filtro=f; document.querySelectorAll('.gf').forEach(x=>x.classList.remove('active')); btn.classList.add('active'); renderTabla(); }
+
+  /* ── MODAL CAUSA ── */
+  function openModal() {
+    editingId = null;
+    document.getElementById('modal-titulo').textContent = 'Cargar nueva causa';
+    document.getElementById('m-submit').textContent = 'Guardar causa';
+    ['m-exp','m-caratula','m-cliente','m-juzgado','m-obs','m-quien'].forEach(id => document.getElementById(id).value='');
+    document.getElementById('modal-bg').classList.add('open');
+  }
+  function openModalEdit(id) {
+    const o = causas.find(x => x.id===id); if (!o) return;
+    editingId = id;
+    document.getElementById('modal-titulo').textContent = 'Editar causa';
+    document.getElementById('m-submit').textContent = 'Guardar cambios';
+    document.getElementById('m-exp').value = o.exp||'';
+    document.getElementById('m-caratula').value = o.caratula||'';
+    document.getElementById('m-cliente').value = o.cliente||'';
+    document.getElementById('m-juzgado').value = o.juzgado||'';
+    document.getElementById('m-obs').value = o.obs||'';
+    document.getElementById('m-area').value = o.area||'Derecho Penal';
+    document.getElementById('m-abogado').value = o.abogado||'Dr. Rojas (MP 4531)';
+    document.getElementById('m-quien').value = '';
+    document.getElementById('modal-bg').classList.add('open');
+  }
+  function closeModal() { document.getElementById('modal-bg').classList.remove('open'); }
+
+  async function guardarCausa() {
+    const exp = document.getElementById('m-exp').value.trim();
+    const caratula = document.getElementById('m-caratula').value.trim();
+    const cliente = document.getElementById('m-cliente').value.trim();
+    if (!exp||!caratula||!cliente) { showToast('Completá expediente, carátula y cliente'); return; }
+    const juzgado = document.getElementById('m-juzgado').value.trim();
+    const area = document.getElementById('m-area').value;
+    const abogado = document.getElementById('m-abogado').value;
+    const obs = document.getElementById('m-obs').value.trim();
+    const quien = document.getElementById('m-quien').value.trim()||'Sin especificar';
+    const btn = document.getElementById('m-submit');
+    btn.disabled=true; btn.textContent='Guardando...';
+    try {
+      if (editingId) {
+        const o = causas.find(x=>x.id===editingId);
+        const hist = [...(o.historia||[]),{fecha:nowStr(),quien,texto:'Datos de la causa editados.',tipo:'mov'}];
+        await db.collection('causas').doc(editingId).update({exp,caratula,cliente,juzgado,area,abogado,obs,historia:hist,actualizadoEn:firebase.firestore.FieldValue.serverTimestamp()});
+        showToast('Causa actualizada');
+      } else {
+        await db.collection('causas').add({exp,caratula,cliente,area,juzgado,abogado,estado:'Iniciado',obs,documentos:[],
+          historia:[{fecha:nowStr(),quien,texto:'Causa creada. '+(obs||''),tipo:'mov'}],
+          creadoEn:firebase.firestore.FieldValue.serverTimestamp(),actualizadoEn:firebase.firestore.FieldValue.serverTimestamp()});
+        showToast('Causa guardada');
+      }
+      closeModal();
+    } catch(e) { showToast('Error: '+e.message); }
+    btn.disabled=false; btn.textContent=editingId?'Guardar cambios':'Guardar causa';
+  }
+
+  /* ── DETALLE ── */
+  function openDetalle(id) {
+    const o = causas.find(x=>x.id===id); if(!o) return;
+    const hist = (o.historia||[]);
+    const docs = (o.documentos||[]);
+    document.getElementById('dp-content').innerHTML = `
+      <button class="dp-close" onclick="closeDetalle()">✕</button>
+      <div style="clear:both;margin-bottom:1rem"></div>
+      <div class="dp-exp">Expediente ${o.exp||'—'}</div>
+      <div class="dp-title">${o.caratula||'Sin carátula'}</div>
+      <div class="dp-grid">
+        <div class="dp-field"><div class="dp-fl">Cliente</div><div class="dp-fv">${o.cliente||'—'}</div></div>
+        <div class="dp-field"><div class="dp-fl">Área</div><div class="dp-fv">${o.area||'—'}</div></div>
+        <div class="dp-field"><div class="dp-fl">Juzgado / Tribunal</div><div class="dp-fv">${o.juzgado||'—'}</div></div>
+        <div class="dp-field"><div class="dp-fl">Abogado responsable</div><div class="dp-fv">${o.abogado||'—'}</div></div>
+        <div class="dp-field"><div class="dp-fl">Estado</div><div class="dp-fv"><span class="badge ${BADGECLS[o.estado]||'b-iniciado'}">${o.estado||'Iniciado'}</span></div></div>
+        <div class="dp-field"><div class="dp-fl">Observaciones</div><div class="dp-fv" style="font-size:12px">${o.obs||'—'}</div></div>
+      </div>
+
+      <div class="dp-section">
+        <span>Documentales (${docs.length})</span>
+      </div>
+      ${docs.length ? docs.map((d,i)=>`
+        <div class="doc-item">
+          <div class="doc-icon">${extIcon(d.nombre)}</div>
+          <div class="doc-info">
+            <div class="doc-nombre">${d.nombre}</div>
+            <div class="doc-meta">${d.fecha} · ${d.quien}</div>
+          </div>
+          <a class="doc-link" href="${d.url}" target="_blank">Ver</a>
+          <button onclick="eliminarDocumental('${o.id}',${i})" style="font-size:10px;padding:3px 8px;border:0.5px solid #fca5a5;background:transparent;color:#dc2626;cursor:pointer;font-family:var(--sans);margin-left:6px">Eliminar</button>
+        </div>`).join('') : '<p style="font-size:12px;color:var(--gm);margin-bottom:.8rem">Sin documentales cargadas.</p>'}
+
+      <div class="upload-area">
+        <input type="file" id="file-input-${o.id}" multiple onchange="subirArchivos('${o.id}',this)">
+        <label class="upload-label" for="file-input-${o.id}">
+          + Cargar documental (PDF, imagen, Word, etc.)
+        </label>
+        <div class="upload-progress" id="upload-progress-${o.id}"></div>
+      </div>
+      <div class="mrow" style="margin-bottom:.5rem">
+        <label style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gd);display:block;margin-bottom:4px;font-weight:500">Descripción del documento</label>
+        <input type="text" id="doc-desc-${o.id}" style="width:100%;padding:8px 10px;border:0.5px solid #d0cec8;font-family:var(--sans);font-size:12px;outline:none;background:#fafafa" placeholder="Ej: Escrito de demanda, Proveído 15/04...">
+      </div>
+      <div class="mrow" style="margin-bottom:1rem">
+        <label style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gd);display:block;margin-bottom:4px;font-weight:500">Cargado por</label>
+        <input type="text" id="doc-quien-${o.id}" style="width:100%;padding:8px 10px;border:0.5px solid #d0cec8;font-family:var(--sans);font-size:12px;outline:none;background:#fafafa" placeholder="Tu nombre o iniciales">
+      </div>
+
+      <div class="dp-section"><span>Historial de movimientos (${hist.length})</span></div>
+      ${hist.length ? hist.slice().reverse().map(h=>`
+        <div class="hist-item ${h.tipo==='doc'?'hi-tipo-doc':h.tipo==='prov'?'hi-tipo-prov':'hi-tipo-mov'}">
+          <div class="hi-meta">${h.fecha} — <strong>${h.quien}</strong>${h.tipo==='doc'?' · Documental':h.tipo==='prov'?' · Proveído':''}</div>
+          <div class="hi-text">${h.texto}</div>
+        </div>`).join('') : '<p style="font-size:12px;color:var(--gm);margin-bottom:.8rem">Sin movimientos.</p>'}
+
+      <div class="dp-section"><span>Registrar movimiento / proveído</span></div>
+      <div class="update-form">
+        <label>Tipo de registro</label>
+        <select id="dp-tipo">
+          <option value="mov">Movimiento / gestión</option>
+          <option value="prov">Proveído del juzgado</option>
+        </select>
+        <label>Nuevo estado</label>
+        <select id="dp-estado">${ESTADOS.map(e=>`<option ${e===o.estado?'selected':''}>${e}</option>`).join('')}</select>
+        <label>Descripción</label>
+        <textarea id="dp-nota" placeholder="Qué ocurrió, resolución del juzgado, próxima audiencia..."></textarea>
+        <label>Registrado por</label>
+        <input type="text" id="dp-quien" placeholder="Tu nombre o iniciales">
+        <button class="msub" id="dp-submit" onclick="registrarMovimiento('${o.id}')">Guardar registro</button>
+      </div>`;
+    document.getElementById('detalle-bg').classList.add('open');
+  }
+
+  /* ── SUBIR ARCHIVOS A CLOUDINARY ── */
+  async function subirArchivos(causaId, input) {
+    const files = Array.from(input.files);
+    if (!files.length) return;
+    const desc = document.getElementById('doc-desc-'+causaId).value.trim();
+    const quien = document.getElementById('doc-quien-'+causaId).value.trim() || 'Sin especificar';
+    const progEl = document.getElementById('upload-progress-'+causaId);
+    progEl.textContent = 'Subiendo ' + files.length + ' archivo(s)...';
+    const o = causas.find(x=>x.id===causaId); if(!o) return;
+    const nuevosDocs = [...(o.documentos||[])];
+    const nuevaHist = [...(o.historia||[])];
+    let subidos = 0;
+    for (const file of files) {
+      try {
+        const fd = new FormData();
+        fd.append('file', file);
+        fd.append('upload_preset', CLOUDINARY_PRESET);
+        fd.append('resource_type', 'auto');
+        const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD}/auto/upload`, {method:'POST',body:fd});
+        const data = await res.json();
+        if (data.secure_url) {
+          const nombreFinal = desc || file.name;
+          nuevosDocs.push({nombre:nombreFinal,url:data.secure_url,fecha:nowStr(),quien,tipo:file.type});
+          nuevaHist.push({fecha:nowStr(),quien,texto:'Documental cargada: '+nombreFinal,tipo:'doc'});
+          subidos++;
+        }
+      } catch(e) { showToast('Error al subir '+file.name); }
+    }
+    if (subidos > 0) {
+      try {
+        await db.collection('causas').doc(causaId).update({documentos:nuevosDocs,historia:nuevaHist,actualizadoEn:firebase.firestore.FieldValue.serverTimestamp()});
+        showToast(subidos + ' archivo(s) cargado(s)');
+        progEl.textContent = '';
+        setTimeout(() => openDetalle(causaId), 400);
+      } catch(e) { showToast('Error al guardar: '+e.message); }
+    } else {
+      progEl.textContent = 'Error al subir los archivos';
+    }
+    input.value = '';
+  }
+
+  /* ── REGISTRAR MOVIMIENTO ── */
+  async function registrarMovimiento(id) {
+    const o = causas.find(x=>x.id===id); if(!o) return;
+    const estado = document.getElementById('dp-estado').value;
+    const nota = document.getElementById('dp-nota').value.trim();
+    const quien = document.getElementById('dp-quien').value.trim()||'Sin especificar';
+    const tipo = document.getElementById('dp-tipo').value;
+    if (!nota) { showToast('Escribí una descripción'); return; }
+    const btn = document.getElementById('dp-submit');
+    btn.disabled=true; btn.textContent='Guardando...';
+    const cambio = estado!==o.estado?` [Estado: ${o.estado} → ${estado}]`:'';
+    const hist = [...(o.historia||[]),{fecha:nowStr(),quien,texto:nota+cambio,tipo}];
+    try {
+      await db.collection('causas').doc(id).update({estado,historia:hist,actualizadoEn:firebase.firestore.FieldValue.serverTimestamp()});
+      showToast('Registro guardado');
+      setTimeout(()=>openDetalle(id),300);
+    } catch(e) { showToast('Error: '+e.message); }
+    btn.disabled=false; btn.textContent='Guardar registro';
+  }
+
+  function closeDetalle() { document.getElementById('detalle-bg').classList.remove('open'); }
+
+  /* ── ELIMINAR CAUSA ── */
+  function confirmarEliminarCausa(id, caratula) {
+    document.getElementById('confirm-titulo').textContent = 'Eliminar causa';
+    document.getElementById('confirm-texto').textContent = '¿Estás seguro que querés eliminar la causa "' + caratula + '"? Esta acción no se puede deshacer y se perderán todos los movimientos y documentales asociados.';
+    document.getElementById('confirm-btn').onclick = () => eliminarCausa(id);
+    document.getElementById('confirm-bg').classList.add('open');
+  }
+  async function eliminarCausa(id) {
+    document.getElementById('confirm-bg').classList.remove('open');
+    try {
+      await db.collection('causas').doc(id).delete();
+      showToast('Causa eliminada');
+    } catch(e) { showToast('Error: ' + e.message); }
+  }
+
+  /* ── ELIMINAR DOCUMENTAL ── */
+  async function eliminarDocumental(causaId, idx) {
+    const o = causas.find(x => x.id === causaId); if (!o) return;
+    const doc = (o.documentos||[])[idx];
+    if (!doc) return;
+    document.getElementById('confirm-titulo').textContent = 'Eliminar documental';
+    document.getElementById('confirm-texto').textContent = '¿Eliminar "' + doc.nombre + '"? El archivo seguirá en Cloudinary pero se quitará de esta causa.';
+    document.getElementById('confirm-btn').onclick = async () => {
+      document.getElementById('confirm-bg').classList.remove('open');
+      const nuevosDocs = [...(o.documentos||[])];
+      nuevosDocs.splice(idx, 1);
+      const hist = [...(o.historia||[]), {fecha:nowStr(), quien:'Sistema', texto:'Documental eliminada: ' + doc.nombre, tipo:'mov'}];
+      try {
+        await db.collection('causas').doc(causaId).update({documentos:nuevosDocs, historia:hist, actualizadoEn:firebase.firestore.FieldValue.serverTimestamp()});
+        showToast('Documental eliminada');
+        setTimeout(() => openDetalle(causaId), 300);
+      } catch(e) { showToast('Error: ' + e.message); }
+    };
+    document.getElementById('confirm-bg').classList.add('open');
+  }
+
+  document.getElementById('modal-bg').addEventListener('click',function(e){if(e.target===this)closeModal();});
+  document.getElementById('detalle-bg').addEventListener('click',function(e){if(e.target===this)closeDetalle();});
+  document.getElementById('login-bg').addEventListener('click',function(e){if(e.target===this)document.getElementById('login-bg').classList.remove('open');});
+  document.getElementById('confirm-bg').addEventListener('click',function(e){if(e.target===this)this.classList.remove('open');});
+
+  window.addEventListener('load',()=>{ initFirebase(); });
+</script>
+</body>
+</html>

@@ -219,6 +219,15 @@
     .update-form input,.update-form select,.update-form textarea{width:100%;padding:8px 10px;border:0.5px solid #d0cec8;font-family:var(--sans);font-size:12px;outline:none;background:var(--white);margin-bottom:.7rem;color:var(--black)}
     .update-form textarea{resize:vertical;min-height:60px}
 
+    /* AUDIENCIAS */
+    .aud-item{display:flex;align-items:center;gap:.8rem;padding:.7rem .8rem;background:#eef2ff;border:0.5px solid #c7d2fe;margin-bottom:.5rem}
+    .aud-fecha{font-family:var(--serif);font-size:1.1rem;font-weight:700;color:#3730a3;min-width:80px}
+    .aud-info{flex:1}
+    .aud-desc{font-size:12px;font-weight:500;color:#1e1b4b}
+    .aud-meta{font-size:10px;color:#6366f1;margin-top:2px}
+    .aud-cal{font-size:10px;padding:4px 10px;background:#4f46e5;color:white;border:none;cursor:pointer;font-family:var(--sans);font-weight:500;white-space:nowrap;flex-shrink:0}
+    .aud-del{font-size:10px;padding:4px 8px;border:0.5px solid #fca5a5;background:transparent;color:#dc2626;cursor:pointer;font-family:var(--sans);margin-left:4px}
+
     /* TOAST */
     .toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);background:var(--black);color:var(--white);padding:10px 22px;font-size:12px;font-weight:500;letter-spacing:.05em;z-index:999;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap}
     .toast.show{opacity:1}
@@ -364,7 +373,6 @@
 
     <div class="g-filters">
       <button class="gf active" onclick="filterBy('todos',this)">Todos</button>
-      <button class="gf" onclick="filterBy('Iniciado',this)">Iniciado</button>
       <button class="gf" onclick="filterBy('En trámite',this)">En trámite</button>
       <button class="gf" onclick="filterBy('Diligencias previas',this)">Diligencias</button>
       <button class="gf" onclick="filterBy('Con resolución',this)">Con resolución</button>
@@ -450,8 +458,8 @@
     appId: "1:922209395216:web:a5cda6f0a529b12b9ee095"
   };
 
-  const ESTADOS = ['Iniciado','En trámite','Diligencias previas','Con resolución','En apelación','Archivado'];
-  const BADGECLS = {'Iniciado':'b-iniciado','En trámite':'b-tramite','Diligencias previas':'b-diligencias','Con resolución':'b-resolucion','En apelación':'b-apelacion','Archivado':'b-archivado'};
+  const ESTADOS = ['En trámite','Diligencias previas','Con resolución','En apelación','Archivado'];
+  const BADGECLS = {'En trámite':'b-tramite','Diligencias previas':'b-diligencias','Con resolución':'b-resolucion','En apelación':'b-apelacion','Archivado':'b-archivado'};
   const ABOGADOS = [
     {siglas:'ANR',nombre:'Dr. Rojas (MP 4531)'},{siglas:'EIF',nombre:'Dr. Flecha (MP 4640)'},
     {siglas:'FMP',nombre:'Dr. Palacio (MP 4730)'},{siglas:'PSS',nombre:'Dr. Servín (MP 4736)'},
@@ -621,7 +629,7 @@
         await db.collection('causas').doc(editingId).update({exp,caratula,cliente,juzgado,area,abogado,obs,historia:hist,actualizadoEn:firebase.firestore.FieldValue.serverTimestamp()});
         showToast('Causa actualizada');
       } else {
-        await db.collection('causas').add({exp,caratula,cliente,area,juzgado,abogado,estado:'Iniciado',obs,documentos:[],
+        await db.collection('causas').add({exp,caratula,cliente,area,juzgado,abogado,estado:'En trámite',obs,documentos:[],audiencias:[],
           historia:[{fecha:nowStr(),quien,texto:'Causa creada. '+(obs||''),tipo:'mov'}],
           creadoEn:firebase.firestore.FieldValue.serverTimestamp(),actualizadoEn:firebase.firestore.FieldValue.serverTimestamp()});
         showToast('Causa guardada');
@@ -636,6 +644,7 @@
     const o = causas.find(x=>x.id===id); if(!o) return;
     const hist = (o.historia||[]);
     const docs = (o.documentos||[]);
+    const auds = (o.audiencias||[]);
     document.getElementById('dp-content').innerHTML = `
       <button class="dp-close" onclick="closeDetalle()">✕</button>
       <div style="clear:both;margin-bottom:1rem"></div>
@@ -646,13 +655,46 @@
         <div class="dp-field"><div class="dp-fl">Área</div><div class="dp-fv">${o.area||'—'}</div></div>
         <div class="dp-field"><div class="dp-fl">Juzgado / Tribunal</div><div class="dp-fv">${o.juzgado||'—'}</div></div>
         <div class="dp-field"><div class="dp-fl">Abogado responsable</div><div class="dp-fv">${o.abogado||'—'}</div></div>
-        <div class="dp-field"><div class="dp-fl">Estado</div><div class="dp-fv"><span class="badge ${BADGECLS[o.estado]||'b-iniciado'}">${o.estado||'Iniciado'}</span></div></div>
+        <div class="dp-field"><div class="dp-fl">Estado</div><div class="dp-fv"><span class="badge ${BADGECLS[o.estado]||'b-tramite'}">${o.estado||'En trámite'}</span></div></div>
         <div class="dp-field"><div class="dp-fl">Observaciones</div><div class="dp-fv" style="font-size:12px">${o.obs||'—'}</div></div>
       </div>
 
-      <div class="dp-section">
-        <span>Documentales (${docs.length})</span>
+      <div class="dp-section"><span>Audiencias (${auds.length})</span></div>
+      ${auds.length ? auds.map((a,i)=>`
+        <div class="aud-item">
+          <div class="aud-fecha">${a.fechaDisplay}</div>
+          <div class="aud-info">
+            <div class="aud-desc">${a.descripcion}</div>
+            <div class="aud-meta">${a.hora} hs · Cargada por ${a.quien}</div>
+          </div>
+          <button class="aud-cal" onclick="abrirGoogleCalendar('${o.caratula.replace(/'/g,'').replace(/"/g,'')}','${a.fechaISO}','${a.hora}','${a.descripcion.replace(/'/g,'').replace(/"/g,'')}')">+ Google Calendar</button>
+          <button class="aud-del" onclick="eliminarAudiencia('${o.id}',${i})">✕</button>
+        </div>`).join('') : '<p style="font-size:12px;color:var(--gm);margin-bottom:.8rem">Sin audiencias cargadas.</p>'}
+
+      <div style="background:#f0f4ff;padding:1rem;margin-bottom:1rem;border:0.5px solid #c7d2fe">
+        <div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#4f46e5;font-weight:500;margin-bottom:.8rem">Agregar audiencia</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:.6rem">
+          <div>
+            <label style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gd);display:block;margin-bottom:3px">Fecha</label>
+            <input type="date" id="aud-fecha-${o.id}" style="width:100%;padding:7px 9px;border:0.5px solid #c7d2fe;font-family:var(--sans);font-size:12px;outline:none;background:white">
+          </div>
+          <div>
+            <label style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gd);display:block;margin-bottom:3px">Hora</label>
+            <input type="time" id="aud-hora-${o.id}" style="width:100%;padding:7px 9px;border:0.5px solid #c7d2fe;font-family:var(--sans);font-size:12px;outline:none;background:white">
+          </div>
+        </div>
+        <div style="margin-bottom:.6rem">
+          <label style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gd);display:block;margin-bottom:3px">Descripción</label>
+          <input type="text" id="aud-desc-${o.id}" style="width:100%;padding:7px 9px;border:0.5px solid #c7d2fe;font-family:var(--sans);font-size:12px;outline:none;background:white" placeholder="Ej: Audiencia de conciliación, Vista de causa...">
+        </div>
+        <div style="margin-bottom:.8rem">
+          <label style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gd);display:block;margin-bottom:3px">Cargada por</label>
+          <input type="text" id="aud-quien-${o.id}" style="width:100%;padding:7px 9px;border:0.5px solid #c7d2fe;font-family:var(--sans);font-size:12px;outline:none;background:white" placeholder="Tu nombre">
+        </div>
+        <button onclick="guardarAudiencia('${o.id}')" style="width:100%;padding:9px;background:#4f46e5;color:white;font-family:var(--sans);font-size:12px;font-weight:500;border:none;cursor:pointer">Guardar audiencia</button>
       </div>
+
+      <div class="dp-section"><span>Documentales (${docs.length})</span></div>
       ${docs.length ? docs.map((d,i)=>`
         <div class="doc-item">
           <div class="doc-icon">${extIcon(d.nombre)}</div>
@@ -764,6 +806,61 @@
       setTimeout(()=>openDetalle(id),300);
     } catch(e) { showToast('Error: '+e.message); }
     btn.disabled=false; btn.textContent='Guardar registro';
+  }
+
+  /* ── AUDIENCIAS ── */
+  async function guardarAudiencia(causaId) {
+    const o = causas.find(x=>x.id===causaId); if(!o) return;
+    const fecha = document.getElementById('aud-fecha-'+causaId).value;
+    const hora = document.getElementById('aud-hora-'+causaId).value;
+    const desc = document.getElementById('aud-desc-'+causaId).value.trim();
+    const quien = document.getElementById('aud-quien-'+causaId).value.trim()||'Sin especificar';
+    if (!fecha||!hora||!desc) { showToast('Completá fecha, hora y descripción'); return; }
+    const p = fecha.split('-');
+    const fechaDisplay = p[2]+'/'+p[1]+'/'+p[0];
+    const nuevaAud = {fechaISO:fecha, fechaDisplay, hora, descripcion:desc, quien, cargadaEn:nowStr()};
+    const nuevasAuds = [...(o.audiencias||[]), nuevaAud];
+    const hist = [...(o.historia||[]),{fecha:nowStr(),quien,texto:'Audiencia cargada: '+desc+' — '+fechaDisplay+' '+hora+' hs',tipo:'mov'}];
+    try {
+      await db.collection('causas').doc(causaId).update({audiencias:nuevasAuds,historia:hist,actualizadoEn:firebase.firestore.FieldValue.serverTimestamp()});
+      showToast('Audiencia guardada');
+      setTimeout(()=>openDetalle(causaId),300);
+    } catch(e) { showToast('Error: '+e.message); }
+  }
+
+  async function eliminarAudiencia(causaId, idx) {
+    const o = causas.find(x=>x.id===causaId); if(!o) return;
+    const a = (o.audiencias||[])[idx]; if(!a) return;
+    document.getElementById('confirm-titulo').textContent = 'Eliminar audiencia';
+    document.getElementById('confirm-texto').textContent = '¿Eliminar la audiencia "'+a.descripcion+'" del '+a.fechaDisplay+'?';
+    document.getElementById('confirm-btn').onclick = async () => {
+      document.getElementById('confirm-bg').classList.remove('open');
+      const nuevas = [...(o.audiencias||[])];
+      nuevas.splice(idx,1);
+      try {
+        await db.collection('causas').doc(causaId).update({audiencias:nuevas,actualizadoEn:firebase.firestore.FieldValue.serverTimestamp()});
+        showToast('Audiencia eliminada');
+        setTimeout(()=>openDetalle(causaId),300);
+      } catch(e) { showToast('Error: '+e.message); }
+    };
+    document.getElementById('confirm-bg').classList.add('open');
+  }
+
+  function abrirGoogleCalendar(caratula, fechaISO, hora, descripcion) {
+    // Construir fechas en formato YYYYMMDDTHHmmssZ para Google Calendar
+    const [anio,mes,dia] = fechaISO.split('-');
+    const [hh,mm] = hora.split(':');
+    const inicio = anio+mes+dia+'T'+hh+mm+'00';
+    // Fin = 1 hora después
+    const finMin = parseInt(mm);
+    const finHora = parseInt(hh)+1;
+    const fin = anio+mes+dia+'T'+finHora.toString().padStart(2,'0')+mm+'00';
+    const titulo = encodeURIComponent('Audiencia: '+caratula);
+    const detalle = encodeURIComponent(descripcion+' — Estudio Jurídico Magnun');
+    // Alarmas: 1 día antes (1440 min) y 1 hora antes (60 min)
+    const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${titulo}&dates=${inicio}/${fin}&details=${detalle}&reminder=1440&reminder=60`;
+    window.open(url, '_blank');
+    showToast('Abriendo Google Calendar...');
   }
 
   function closeDetalle() { document.getElementById('detalle-bg').classList.remove('open'); }

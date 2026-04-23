@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estudio Jurídico Magnun | Formosa, Argentina</title>
+  <meta name="description" content="Estudio Jurídico Magnun, Formosa. Especialistas en Derecho Penal, Civil, Laboral, Comercial y de Familia. Saavedra 248 Altos, Oficina 14.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{--black:#0a0a0a;--white:#fafafa;--gl:#f2f0eb;--gm:#c8c6c0;--gd:#4a4845;--serif:'Playfair Display',Georgia,serif;--sans:'DM Sans',sans-serif;}
+    body{font-family:var(--sans);background:var(--white);color:var(--black);overflow-x:hidden}
+    nav{position:sticky;top:0;z-index:200;background:rgba(250,250,250,0.97);backdrop-filter:blur(6px);border-bottom:0.5px solid #ddd;padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:58px}
+    .logo-wrap{display:flex;flex-direction:column}
+    .logo-main{font-family:var(--serif);font-size:19px;font-weight:700;letter-spacing:0.06em;color:var(--black);line-height:1}
+    .logo-sub{font-size:9px;font-weight:400;letter-spacing:0.2em;color:var(--gd);text-transform:uppercase;margin-top:2px}
+    .nav-links{display:flex;gap:2rem;list-style:none}
+    .nav-links a{font-size:12px;color:var(--gd);text-decoration:none;letter-spacing:.05em}
+    .nav-links a:hover{color:var(--black)}
+    .nav-btns{display:flex;gap:.5rem}
+    .nbtn{font-size:11px;font-weight:500;letter-spacing:0.07em;padding:7px 14px;cursor:pointer;border:0.5px solid #ccc;background:transparent;color:var(--gd);font-family:var(--sans)}
+    .nbtn:hover{border-color:var(--black);color:var(--black)}
+    .nbtn.dark{background:var(--black);color:var(--white);border-color:var(--black)}
+    .nbtn.dark:hover{opacity:.8}
+    .page{display:none}.page.active{display:block}
+    /* SITIO */
+    .hero{min-height:88vh;display:flex;align-items:center;background:var(--black);padding:5rem 3.5rem}
+    .htag{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#777;margin-bottom:1.8rem}
+    .htitle{font-family:var(--serif);font-size:clamp(2.4rem,4vw,4rem);line-height:1.1;color:var(--white);margin-bottom:1.4rem;font-weight:700;max-width:700px}
+    .htitle em{font-style:italic;color:#aaa}
+    .hsub{font-size:15px;line-height:1.75;color:#777;max-width:500px;margin-bottom:2.5rem;font-weight:300}
+    .hbtns{display:flex;gap:.8rem;flex-wrap:wrap}
+    .hbtn1{background:var(--white);color:var(--black);padding:12px 28px;font-size:12px;font-weight:500;border:none;cursor:pointer;font-family:var(--sans)}
+    .hbtn2{background:transparent;color:var(--white);padding:11px 28px;font-size:12px;border:0.5px solid #444;cursor:pointer;font-family:var(--sans)}
+    .areas-sec{background:var(--gl);padding:4.5rem 3.5rem}
+    .stag{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gd);margin-bottom:.8rem;font-weight:500}
+    .stitle{font-family:var(--serif);font-size:clamp(1.7rem,2.8vw,2.4rem);font-weight:700;margin-bottom:2.5rem}
+    .agrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:1px;background:#ccc}
+    .acard{background:var(--white);padding:1.8rem 1.4rem;transition:background .25s}
+    .acard:hover{background:var(--black)}.acard:hover .aico,.acard:hover .aname,.acard:hover .adesc{color:var(--white)}
+    .aico{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gd);margin-bottom:.9rem;font-weight:500;transition:color .25s}
+    .aname{font-family:var(--serif);font-size:1.15rem;font-weight:700;margin-bottom:.4rem;transition:color .25s}
+    .adesc{font-size:12px;line-height:1.6;color:var(--gd);transition:color .25s;font-weight:300}
+    .team-sec{padding:4.5rem 3.5rem;background:var(--white)}
+    .tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:1.2rem;margin-top:2rem}
+    .tcard{border:0.5px solid #e0ddd7;overflow:hidden}
+    .tavatar{height:160px;background:var(--gl);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.8rem;font-weight:700;color:var(--gd)}
+    .tinfo{padding:.9rem}.tname{font-weight:500;font-size:13px;margin-bottom:2px;line-height:1.3}.tmp{font-size:10px;color:#aaa}
+    .proceso-sec{background:var(--black);color:var(--white);padding:4.5rem 3.5rem}
+    .proceso-sec .stag{color:#555}.proceso-sec .stitle{color:var(--white)}
+    .pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:1px;background:#1a1a1a;margin-top:2.5rem}
+    .pstep{background:var(--black);padding:1.8rem 1.4rem}
+    .pnum{font-family:var(--serif);font-size:2.2rem;font-weight:700;color:#222;line-height:1;margin-bottom:.9rem}
+    .ptitle{font-size:13px;font-weight:500;margin-bottom:.4rem}.pdesc{font-size:11px;line-height:1.65;color:#666;font-weight:300}
+    .contacto-sec{background:var(--gl);padding:4.5rem 3.5rem;display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start}
+    .ci h2{font-family:var(--serif);font-size:1.9rem;font-weight:700;margin-bottom:.9rem}
+    .ci p{font-size:13px;line-height:1.7;color:var(--gd);margin-bottom:1.8rem;font-weight:300}
+    .cdato{margin-bottom:1.1rem;padding-bottom:1.1rem;border-bottom:0.5px solid #ddd}.cdato:last-child{border-bottom:none}
+    .dlbl{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gd);font-weight:500;margin-bottom:2px}.dval{font-size:13px}
+    .cform{background:var(--white);padding:2.2rem;border:0.5px solid #ddd}
+    .frow{margin-bottom:1rem}
+    .frow label{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gd);margin-bottom:5px;font-weight:500}
+    .frow input,.frow select,.frow textarea{width:100%;padding:9px 11px;background:var(--gl);border:0.5px solid #d0cec8;font-family:var(--sans);font-size:12px;outline:none;color:var(--black)}
+    .frow textarea{resize:vertical;min-height:80px}
+    .fsub{width:100%;padding:12px;background:var(--black);color:var(--white);font-family:var(--sans);font-size:12px;font-weight:500;border:none;cursor:pointer;text-transform:uppercase}
+    .footer{background:var(--black);padding:1.8rem 3.5rem;display:flex;justify-content:space-between;align-items:center;border-top:0.5px solid #1a1a1a}
+    .flogo{font-family:var(--serif);font-size:14px;color:var(--white);font-weight:700;letter-spacing:.07em}
+    .fcopy{font-size:11px;color:#444;letter-spacing:.06em}
+    .flinks a{font-size:11px;color:#444;text-decoration:none;margin-left:1.2rem}
+    /* LOGIN */
+    .login-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:900;align-items:center;justify-content:center}
+    .login-bg.open{display:flex}
+    .login-box{width:360px;max-width:92vw;padding:3rem 2.5rem;border:0.5px solid #222;background:#0d0d0d}
+    .login-logo{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--white);margin-bottom:4px}
+    .login-sub{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#555;margin-bottom:2.5rem}
+    .login-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#666;display:block;margin-bottom:6px;font-weight:500}
+    .login-input{width:100%;padding:11px 14px;background:#111;border:0.5px solid #2a2a2a;font-family:var(--sans);font-size:14px;color:var(--white);outline:none;margin-bottom:1.2rem}
+    .login-btn{width:100%;padding:12px;background:var(--white);color:var(--black);font-family:var(--sans);font-size:12px;font-weight:500;border:none;cursor:pointer;text-transform:uppercase}
+    .login-error{font-size:12px;color:#ef4444;margin-top:.8rem;text-align:center;min-height:18px}
+    /* GESTOR */
+    .gestor{background:#f7f6f3;min-height:calc(100vh - 58px);padding:2rem 2.5rem}
+    .g-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1.2rem;padding-bottom:1.2rem;border-bottom:0.5px solid #ddd;flex-wrap:wrap;gap:1rem}
+    .g-title{font-family:var(--serif);font-size:1.6rem;font-weight:700}
+    .g-sub{font-size:12px;color:var(--gd);margin-top:3px;display:flex;align-items:center;gap:6px}
+    .fb-status{width:7px;height:7px;border-radius:50%;background:#9ca3af;display:inline-block}
+    .fb-status.ok{background:#16a34a}.fb-status.err{background:#dc2626}
+    .g-actions{display:flex;gap:.7rem;align-items:center;flex-wrap:wrap}
+    .gbtn{font-size:12px;font-weight:500;padding:9px 16px;border:0.5px solid #ccc;background:var(--white);cursor:pointer;font-family:var(--sans)}
+    .gbtn:hover{border-color:var(--black);background:var(--black);color:var(--white)}
+    .gbtn.primary{background:var(--black);color:var(--white);border-color:var(--black)}
+    .gbtn.primary:hover{opacity:.8}
+    .logout-btn{font-size:11px;color:#999;background:none;border:none;cursor:pointer;font-family:var(--sans)}
+    .logout-btn:hover{color:var(--black)}
+    /* TABS */
+    .g-tabs{display:flex;border-bottom:2px solid #e5e3dd;margin-bottom:1.5rem}
+    .g-tab{font-size:13px;font-weight:500;padding:10px 22px;cursor:pointer;border:none;background:transparent;color:var(--gd);font-family:var(--sans);border-bottom:2px solid transparent;margin-bottom:-2px}
+    .g-tab.active{color:var(--black);border-bottom-color:var(--black)}
+    .g-tab-pane{display:none}.g-tab-pane.active{display:block}
+    /* STATS */
+    .g-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.2rem}
+    .gs{background:var(--white);border:0.5px solid #e5e3dd;padding:1rem 1.2rem}
+    .gs-n{font-family:var(--serif);font-size:1.8rem;font-weight:700;line-height:1}
+    .gs-l{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gd);margin-top:4px}
+    /* TOOLBAR */
+    .g-toolbar{display:flex;gap:.6rem;margin-bottom:1rem;flex-wrap:wrap;align-items:center}
+    .gf{font-size:11px;padding:5px 11px;border:0.5px solid #d0cec8;background:var(--white);cursor:pointer;font-family:var(--sans)}
+    .gf.active,.gf:hover{background:var(--black);color:var(--white);border-color:var(--black)}
+    .g-search{flex:1;min-width:200px;padding:7px 12px;border:0.5px solid #d0cec8;background:var(--white);font-family:var(--sans);font-size:12px;outline:none}
+    .g-search:focus{border-color:var(--black)}
+    .g-select{padding:6px 10px;border:0.5px solid #d0cec8;background:var(--white);font-family:var(--sans);font-size:11px;outline:none;cursor:pointer}
+    /* AGRUPADORES */
+    .grupo-header{background:var(--black);color:var(--white);padding:8px 14px;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;margin-top:.8rem;display:flex;justify-content:space-between;align-items:center}
+    .grupo-count{font-size:10px;opacity:.6;font-weight:400}
+    /* TABLA */
+    .g-table-wrap{background:var(--white);border:0.5px solid #e5e3dd;overflow-x:auto}
+    table{width:100%;border-collapse:collapse;font-size:12px;min-width:620px}
+    thead tr{background:#f7f6f3;border-bottom:1px solid #e5e3dd}
+    thead th{padding:9px 12px;text-align:left;font-weight:500;letter-spacing:.06em;font-size:10px;text-transform:uppercase;white-space:nowrap;color:var(--gd)}
+    tbody tr{border-bottom:0.5px solid #eee;cursor:pointer}
+    tbody tr:hover{background:#f7f6f3}
+    tbody td{padding:9px 12px;vertical-align:middle}
+    .exp-num{font-weight:500;font-family:var(--serif);font-size:13px}
+    .badge{display:inline-block;padding:3px 8px;font-size:10px;font-weight:500;letter-spacing:.05em;text-transform:uppercase}
+    .b-tramite{background:#fff3cd;color:#856404}.b-diligencias{background:#e0f2fe;color:#0369a1}
+    .b-resolucion{background:#d1fae5;color:#065f46}.b-apelacion{background:#fce7f3;color:#9d174d}
+    .b-archivado{background:#f3f4f6;color:#4b5563}
+    .adot{width:24px;height:24px;border-radius:50%;background:var(--gl);display:inline-flex;align-items:center;justify-content:center;font-size:9px;font-weight:600;color:var(--gd)}
+    .adot.c{background:#e0f2fe;color:#0369a1}
+    .ultimo-mov{font-size:11px;color:var(--gd);max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:block}
+    .loading-row td{text-align:center;padding:2.5rem;color:var(--gm);font-size:13px}
+    .row-actions{display:flex;gap:.3rem}
+    .ra{font-size:10px;padding:4px 8px;border:0.5px solid #d0cec8;background:transparent;cursor:pointer;font-family:var(--sans)}
+    .ra:hover{background:var(--black);color:var(--white);border-color:var(--black)}
+    .ra.red{color:#dc2626;border-color:#fca5a5}.ra.red:hover{background:#dc2626;color:white;border-color:#dc2626}
+    /* MODAL */
+    .modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:500;align-items:center;justify-content:center}
+    .modal-bg.open{display:flex}
+    .modal{background:var(--white);width:620px;max-width:96vw;max-height:92vh;overflow-y:auto;padding:2rem;position:relative}
+    .modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:18px;cursor:pointer;color:var(--gd)}
+    .modal-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;margin-bottom:1.5rem;padding-bottom:.8rem;border-bottom:0.5px solid #eee}
+    .mrow{margin-bottom:.9rem}
+    .mrow label{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gd);margin-bottom:4px;font-weight:500}
+    .mrow input,.mrow select,.mrow textarea{width:100%;padding:9px 11px;border:0.5px solid #d0cec8;font-family:var(--sans);font-size:13px;outline:none;background:#fafafa;color:var(--black)}
+    .mrow textarea{resize:vertical;min-height:70px}
+    .mrow-2{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+    .msub{width:100%;padding:11px;background:var(--black);color:var(--white);font-family:var(--sans);font-size:12px;font-weight:500;border:none;cursor:pointer;margin-top:.5rem;text-transform:uppercase}
+    .msub:disabled{opacity:.4;cursor:not-allowed}
+    /* SORTEO */
+    .sorteo-box{background:#f0fdf4;border:0.5px solid #bbf7d0;padding:1rem;margin-bottom:.9rem}
+    .sorteo-titulo{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#166534;font-weight:500;margin-bottom:.7rem}
+    .sorteo-grid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+    .sorteo-lbl{font-size:10px;color:#4b5563;margin-bottom:3px;text-transform:uppercase;letter-spacing:.06em}
+    .sorteo-val{font-size:13px;font-weight:500;color:#166534}
+    .sorteo-nota{font-size:10px;color:#9ca3af;margin-top:2px}
+    /* DETALLE */
+    .detalle-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:500;align-items:flex-start;justify-content:flex-end}
+    .detalle-bg.open{display:flex}
+    .detalle-panel{background:var(--white);width:520px;max-width:100vw;height:100vh;overflow-y:auto;padding:2rem}
+    .dp-close{float:right;background:none;border:none;font-size:20px;cursor:pointer;color:var(--gd)}
+    .dp-exp{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gd);margin-bottom:.3rem}
+    .dp-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;margin-bottom:1.2rem;line-height:1.3}
+    .dp-grid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-bottom:1.4rem}
+    .dp-field{border:0.5px solid #eee;padding:.8rem}
+    .dp-fl{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gd);margin-bottom:3px}
+    .dp-fv{font-size:13px}
+    .dp-section{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gd);margin:1.2rem 0 .6rem;font-weight:500;border-bottom:0.5px solid #eee;padding-bottom:.4rem}
+    /* AUDIENCIAS */
+    .aud-item{display:flex;align-items:center;gap:.8rem;padding:.7rem .8rem;background:#eef2ff;border:0.5px solid #c7d2fe;margin-bottom:.5rem}
+    .aud-fecha{font-family:var(--serif);font-size:1.1rem;font-weight:700;color:#3730a3;min-width:80px}
+    .aud-info{flex:1}.aud-desc{font-size:12px;font-weight:500;color:#1e1b4b}.aud-meta{font-size:10px;color:#6366f1;margin-top:2px}
+    .aud-cal{font-size:10px;padding:4px 10px;background:#4f46e5;color:white;border:none;cursor:pointer;font-family:var(--sans);white-space:nowrap}
+    .aud-del{font-size:10px;padding:4px 8px;border:0.5px solid #fca5a5;background:transparent;color:#dc2626;cursor:pointer;font-family:var(--sans);margin-left:4px}
+    /* DOCS */
+    .doc-item{display:flex;align-items:center;gap:.8rem;padding:.7rem .8rem;background:#f7f6f3;border:0.5px solid #eee;margin-bottom:.5rem}
+    .doc-icon{width:32px;height:32px;background:var(--gl);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:var(--gd);flex-shrink:0}
+    .doc-info{flex:1;min-width:0}.doc-nombre{font-size:12px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .doc-meta{font-size:10px;color:var(--gd);margin-top:2px}
+    .doc-link{font-size:11px;color:#1a56db;text-decoration:none}
+    .upload-area{border:1px dashed #d0cec8;padding:1.2rem;text-align:center;background:#fafafa;margin-bottom:.8rem}
+    .upload-area input{display:none}
+    .upload-label{font-size:12px;color:var(--gd);cursor:pointer;display:block}
+    .upload-label:hover{color:var(--black)}
+    .upload-progress{font-size:11px;color:var(--gd);margin-top:.5rem;min-height:16px}
+    /* HISTORIAL */
+    .hist-item{padding:.8rem;border-left:2px solid #e5e3dd;margin-bottom:.5rem;background:#f7f6f3}
+    .hi-meta{font-size:10px;color:var(--gd);margin-bottom:3px}.hi-text{font-size:12px;line-height:1.5}
+    .hi-doc{border-left-color:#1a56db}.hi-prov{border-left-color:#065f46}
+    /* UPDATE FORM */
+    .update-form{background:#f7f6f3;padding:1.2rem;margin-top:.5rem}
+    .update-form label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gd);display:block;margin-bottom:4px;font-weight:500}
+    .update-form input,.update-form select,.update-form textarea{width:100%;padding:8px 10px;border:0.5px solid #d0cec8;font-family:var(--sans);font-size:12px;outline:none;background:var(--white);margin-bottom:.7rem;color:var(--black)}
+    .update-form textarea{resize:vertical;min-height:60px}
+    /* TOAST */
+    .toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);background:var(--black);color:var(--white);padding:10px 22px;font-size:12px;font-weight:500;z-index:999;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap}
+    .toast.show{opacity:1}
+    /* HONORARIOS */
+    .hon-box{background:#fafafa;border:0.5px solid #e5e3dd;padding:1.2rem;margin-bottom:1rem}
+    .hon-titulo{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gd);font-weight:500;margin-bottom:1rem}
+    .hon-dist{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.6rem;margin-top:.8rem}
+    .hon-parte{background:var(--white);border:0.5px solid #e5e3dd;padding:.8rem;text-align:center}
+    .hon-pct{font-family:var(--serif);font-size:1.4rem;font-weight:700;line-height:1}
+    .hon-lbl{font-size:10px;color:var(--gd);margin-top:3px;letter-spacing:.06em}
+    .hon-monto{font-size:13px;font-weight:500;color:#166534;margin-top:4px}
+    .hon-form label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gd);display:block;margin-bottom:4px;font-weight:500;margin-top:.8rem}
+    .hon-form input,.hon-form select{width:100%;padding:8px 10px;border:0.5px solid #d0cec8;font-family:var(--sans);font-size:12px;outline:none;background:var(--white);color:var(--black)}
+    .hon-form input:focus,.hon-form select:focus{border-color:var(--black)}
+    .hon-saved{background:#f0fdf4;border:0.5px solid #bbf7d0;padding:1rem;margin-bottom:.8rem}
+    .hon-saved-titulo{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#166534;font-weight:500;margin-bottom:.6rem}
+    @media(max-width:768px){.hero{padding:4rem 2rem}.contacto-sec{grid-template-columns:1fr}.nav-links{display:none}.g-stats{grid-template-columns:1fr 1fr}.mrow-2{grid-template-columns:1fr}.dp-grid{grid-template-columns:1fr}.sorteo-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo-wrap"><div class="logo-main">MAGNUN</div><div class="logo-sub">Estudio Jurídico</div></div>
+  <ul class="nav-links">
+    <li><a href="#areas">Áreas</a></li><li><a href="#equipo">Equipo</a></li>
+    <li><a href="#proceso">Proceso</a></li><li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <div class="nav-btns">
+    <button class="nbtn" onclick="showPage('sitio')">Sitio público</button>
+    <button class="nbtn dark" onclick="pedirLogin()">Ingresar</button>
+  </div>
+</nav>
+
+<!-- SITIO -->
+<div id="page-sitio" class="page active">
+  <section class="hero">
+    <div>
+      <div class="htag">Estudio Jurídico · Formosa, Argentina</div>
+      <h1 class="htitle">Soluciones legales <em>de excelencia</em> para cada caso</h1>
+      <p class="hsub">Representamos a personas y empresas con compromiso, precisión y estrategia jurídica en todas las ramas del derecho.</p>
+      <div class="hbtns">
+        <button class="hbtn1" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Consulta sin cargo</button>
+        <button class="hbtn2" onclick="document.getElementById('areas').scrollIntoView({behavior:'smooth'})">Ver servicios</button>
+      </div>
+    </div>
+  </section>
+  <section class="areas-sec" id="areas">
+    <div class="stag">Servicios</div><div class="stitle">Nuestras áreas de práctica</div>
+    <div class="agrid">
+      <div class="acard"><div class="aico">01</div><div class="aname">Derecho Penal</div><div class="adesc">Defensa y representación en causas penales, medidas cautelares, recursos y apelaciones.</div></div>
+      <div class="acard"><div class="aico">02</div><div class="aname">Derecho Civil</div><div class="adesc">Contratos, responsabilidad civil, sucesiones, derechos reales y litigios patrimoniales.</div></div>
+      <div class="acard"><div class="aico">03</div><div class="aname">Derecho Laboral</div><div class="adesc">Relaciones de trabajo, despidos, accidentes laborales, reclamos ante SECLO y juicio oral.</div></div>
+      <div class="acard"><div class="aico">04</div><div class="aname">Derecho Comercial</div><div class="adesc">Sociedades, contratos comerciales, concursos, quiebras y negociación empresarial.</div></div>
+      <div class="acard"><div class="aico">05</div><div class="aname">Derecho de Familia</div><div class="adesc">Divorcios, alimentos, régimen de comunicación, adopción, violencia familiar y tutelas.</div></div>
+    </div>
+  </section>
+  <section class="team-sec" id="equipo">
+    <div class="stag">El Equipo</div><div class="stitle">Nuestro equipo</div>
+    <div class="tgrid">
+      <div class="tcard"><div class="tavatar">ANR</div><div class="tinfo"><div class="tname">Dr. Alejandro N. Daniel Rojas</div><div class="tmp">MP 4531</div></div></div>
+      <div class="tcard"><div class="tavatar">EIF</div><div class="tinfo"><div class="tname">Dr. Edgardo Ignacio Flecha</div><div class="tmp">MP 4640</div></div></div>
+      <div class="tcard"><div class="tavatar">FMP</div><div class="tinfo"><div class="tname">Dr. Facundo Martin Palacio</div><div class="tmp">MP 4730</div></div></div>
+      <div class="tcard"><div class="tavatar">PSS</div><div class="tinfo"><div class="tname">Dr. Pablo Santiago Servín</div><div class="tmp">MP 4736</div></div></div>
+      <div class="tcard"><div class="tavatar">JPS</div><div class="tinfo"><div class="tname">Dr. Juan Pablo Sánchez</div><div class="tmp">MP 4482</div></div></div>
+      <div class="tcard"><div class="tavatar">VG</div><div class="tinfo"><div class="tname">Dr. Víctor Giménez</div><div class="tmp">Sin matrícula</div></div></div>
+    </div>
+  </section>
+  <section class="proceso-sec" id="proceso">
+    <div class="stag">Metodología</div><div class="stitle">Cómo trabajamos</div>
+    <div class="pgrid">
+      <div class="pstep"><div class="pnum">01</div><div class="ptitle">Consulta inicial</div><div class="pdesc">Analizamos tu caso gratuitamente y evaluamos la estrategia más adecuada.</div></div>
+      <div class="pstep"><div class="pnum">02</div><div class="ptitle">Diagnóstico jurídico</div><div class="pdesc">Elaboramos un informe con opciones, plazos y estimación de costos.</div></div>
+      <div class="pstep"><div class="pnum">03</div><div class="ptitle">Acuerdo de honorarios</div><div class="pdesc">Transparencia total antes de iniciar cualquier acción legal.</div></div>
+      <div class="pstep"><div class="pnum">04</div><div class="ptitle">Gestión activa</div><div class="pdesc">Seguimiento con informes periódicos y acceso permanente a tu abogado.</div></div>
+      <div class="pstep"><div class="pnum">05</div><div class="ptitle">Resolución</div><div class="pdesc">Buscamos la solución más favorable: acuerdo, sentencia o mediación.</div></div>
+    </div>
+  </section>
+  <section class="contacto-sec" id="contacto">
+    <div class="ci">
+      <div class="stag">Contacto</div><h2>Consultanos sin cargo</h2>
+      <p>Estamos disponibles para orientarte. La primera consulta es gratuita y sin compromiso.</p>
+      <div class="cdato"><div class="dlbl">Dirección</div><div class="dval">Saavedra 248 Altos, Oficina 14, Formosa</div></div>
+      <div class="cdato"><div class="dlbl">WhatsApp</div><div class="dval">+54 9 370 000-0000</div></div>
+      <div class="cdato"><div class="dlbl">Email</div><div class="dval">contacto@estudiomagnun.com.ar</div></div>
+      <div class="cdato"><div class="dlbl">Horarios</div><div class="dval">Lun–Vie 8:00 a 18:00 hs</div></div>
+    </div>
+    <div class="cform">
+      <div class="frow"><label>Nombre completo</label><input type="text" placeholder="Tu nombre y apellido"></div>
+      <div class="frow"><label>Teléfono / WhatsApp</label><input type="text" placeholder="+54 9 ..."></div>
+      <div class="frow"><label>Área de consulta</label><select><option>Seleccioná un área</option><option>Derecho Penal</option><option>Derecho Civil</option><option>Derecho Laboral</option><option>Derecho Comercial</option><option>Derecho de Familia</option></select></div>
+      <div class="frow"><label>Tu consulta</label><textarea placeholder="Describí brevemente tu situación..."></textarea></div>
+      <button class="fsub" onclick="this.textContent='¡Enviado!';this.style.background='#2a2a2a'">Enviar consulta</button>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="flogo">MAGNUN</div>
+    <div class="fcopy">© 2025 Estudio Jurídico Magnun · Formosa, Argentina</div>
+    <div class="flinks"><a href="#">Privacidad</a><a href="#">Términos</a></div>
+  </footer>
+</div>
+
+<!-- LOGIN -->
+<div class="login-bg" id="login-bg">
+  <div class="login-box">
+    <div class="login-logo">MAGNUN</div>
+    <div class="login-sub">Acceso interno</div>
+    <label class="login-label">Contraseña</label>
+    <input class="login-input" type="password" id="login-pass" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()">
+    <button class="login-btn" onclick="doLogin()">Ingresar</button>
+    <div class="login-error" id="login-error"></div>
+  </div>
+</div>
+
+<!-- GESTOR -->
+<div id="page-gestor" class="page">
+  <div class="gestor">
+    <div class="g-header">
+      <div>
+        <div class="g-title">Gestor de Causas</div>
+        <div class="g-sub"><span class="fb-status" id="fb-dot"></span><span id="fb-label">Conectando...</span></div>
+      </div>
+      <div class="g-actions">
+        <button class="logout-btn" onclick="doLogout()">Cerrar sesión</button>
+        <button class="gbtn" onclick="renderActivo()">↺ Actualizar</button>
+        <button class="gbtn primary" id="btn-nueva" onclick="openModal()">+ Nueva causa</button>
+      </div>
+    </div>
+    <div class="g-tabs">
+      <button class="g-tab active" onclick="switchTab('pers',this)">Mis Causas</button>
+      <button class="g-tab" onclick="switchTab('est',this)">Causas del Estudio</button>
+    </div>
+
+    <!-- MIS CAUSAS -->
+    <div id="tab-pers" class="g-tab-pane active">
+      <div class="g-stats" id="stats-pers"></div>
+      <div class="g-toolbar">
+        <input class="g-search" type="text" placeholder="Buscar expediente o carátula..." oninput="bqP=this.value;renderPers()">
+        <select class="g-select" id="fAbogP" onchange="renderPers()">
+          <option value="">Todos los abogados</option>
+          <option>Dr. Rojas (MP 4531)</option><option>Dr. Flecha (MP 4640)</option>
+          <option>Dr. Palacio (MP 4730)</option><option>Dr. Servín (MP 4736)</option>
+          <option>Dr. Sánchez (MP 4482)</option><option>Dr. Giménez</option>
+        </select>
+        <select class="g-select" id="fFuerP" onchange="renderPers()">
+          <option value="">Todos los fueros</option>
+          <option>Penal</option><option>Civil</option><option>Laboral</option>
+          <option>Daños y Perjuicios</option><option>Accidentes</option>
+          <option>Previsional</option><option>Federal</option><option>Familia</option>
+        </select>
+        <select class="g-select" id="fEstP" onchange="renderPers()">
+          <option value="">Todos los estados</option>
+          <option>En trámite</option><option>Diligencias previas</option>
+          <option>Con resolución</option><option>En apelación</option><option>Archivado</option>
+        </select>
+        <select class="g-select" id="gAgrupP" onchange="renderPers()">
+          <option value="">Sin agrupación</option>
+          <option value="abogado">Por abogado</option>
+          <option value="fuero">Por fuero</option>
+        </select>
+      </div>
+      <div id="tbl-pers"></div>
+    </div>
+
+    <!-- CAUSAS DEL ESTUDIO -->
+    <div id="tab-est" class="g-tab-pane">
+      <div style="background:#fffbeb;border:0.5px solid #fde68a;padding:.8rem 1rem;margin-bottom:1rem;font-size:12px;color:#92400e">
+        Causas nuevas del estudio. Se asignan automáticamente por sorteo rotativo entre los 6 abogados.
+      </div>
+      <div class="g-stats" id="stats-est"></div>
+      <div class="g-toolbar">
+        <input class="g-search" type="text" placeholder="Buscar expediente o carátula..." oninput="bqE=this.value;renderEst()">
+        <select class="g-select" id="fAbogE" onchange="renderEst()">
+          <option value="">Todos los abogados</option>
+          <option>Dr. Rojas (MP 4531)</option><option>Dr. Flecha (MP 4640)</option>
+          <option>Dr. Palacio (MP 4730)</option><option>Dr. Servín (MP 4736)</option>
+          <option>Dr. Sánchez (MP 4482)</option><option>Dr. Giménez</option>
+        </select>
+        <select class="g-select" id="fFuerE" onchange="renderEst()">
+          <option value="">Todos los fueros</option>
+          <option>Penal</option><option>Civil</option><option>Laboral</option>
+          <option>Daños y Perjuicios</option><option>Accidentes</option>
+          <option>Previsional</option><option>Federal</option><option>Familia</option>
+        </select>
+        <select class="g-select" id="fEstE" onchange="renderEst()">
+          <option value="">Todos los estados</option>
+          <option>En trámite</option><option>Diligencias previas</option>
+          <option>Con resolución</option><option>En apelación</option><option>Archivado</option>
+        </select>
+        <select class="g-select" id="gAgrupE" onchange="renderEst()">
+          <option value="">Sin agrupación</option>
+          <option value="abogado">Por responsable</option>
+          <option value="fuero">Por fuero</option>
+        </select>
+      </div>
+      <div id="tbl-est"></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL CAUSA -->
+<div class="modal-bg" id="modal-bg">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-title" id="modal-titulo">Nueva causa</div>
+    <div class="mrow-2">
+      <div class="mrow"><label>Nº de expediente</label><input type="text" id="m-exp" placeholder="Ej: 1234/2025"></div>
+      <div class="mrow"><label>Fuero</label>
+        <select id="m-fuero"><option>Penal</option><option>Civil</option><option>Laboral</option><option>Daños y Perjuicios</option><option>Accidentes</option><option>Previsional</option><option>Federal</option><option>Familia</option></select>
+      </div>
+    </div>
+    <div class="mrow"><label>Carátula / Nombre de la causa</label><input type="text" id="m-caratula" placeholder="Ej: García Juan c/ Empresa SA s/ Despido"></div>
+    <div class="mrow-2">
+      <div class="mrow"><label>Cliente</label><input type="text" id="m-cliente" placeholder="Nombre del cliente"></div>
+      <div class="mrow"><label>Juzgado / Tribunal</label><input type="text" id="m-juzgado" placeholder="Ej: Juzgado Civil Nº 2"></div>
+    </div>
+    <div id="sec-abog" class="mrow">
+      <label>Abogado responsable</label>
+      <select id="m-abogado"><option>Dr. Rojas (MP 4531)</option><option>Dr. Flecha (MP 4640)</option><option>Dr. Palacio (MP 4730)</option><option>Dr. Servín (MP 4736)</option><option>Dr. Sánchez (MP 4482)</option><option>Dr. Giménez</option></select>
+    </div>
+    <div id="sec-sorteo" style="display:none">
+      <div class="sorteo-box" id="sorteo-nueva">
+        <div class="sorteo-titulo">Asignación automática por sorteo rotativo</div>
+        <div class="sorteo-grid">
+          <div><div class="sorteo-lbl">Responsable asignado</div><div class="sorteo-val" id="m-resp-txt">—</div><div class="sorteo-nota">No editable</div></div>
+          <div><div class="sorteo-lbl">Colaborador</div><select id="m-colab" style="width:100%;padding:7px 9px;border:0.5px solid #bbf7d0;font-family:var(--sans);font-size:12px;outline:none;background:white;margin-top:2px"></select><div class="sorteo-nota">Editable</div></div>
+        </div>
+      </div>
+      <div id="sec-edit-colab" style="display:none">
+        <div class="mrow-2">
+          <div class="mrow"><label>Responsable (no editable)</label><input type="text" id="m-resp-edit" disabled style="background:#f3f4f6;color:#9ca3af;cursor:not-allowed"></div>
+          <div class="mrow"><label>Colaborador (editable)</label><select id="m-colab-edit"><option>Dr. Rojas (MP 4531)</option><option>Dr. Flecha (MP 4640)</option><option>Dr. Palacio (MP 4730)</option><option>Dr. Servín (MP 4736)</option><option>Dr. Sánchez (MP 4482)</option><option>Dr. Giménez</option></select></div>
+        </div>
+      </div>
+    </div>
+    <div class="mrow"><label>Observaciones iniciales</label><textarea id="m-obs" placeholder="Antecedentes, descripción de la causa..."></textarea></div>
+    <div class="mrow"><label>Cargado por</label><input type="text" id="m-quien" placeholder="Tu nombre o iniciales"></div>
+    <button class="msub" id="m-submit" onclick="guardarCausa()">Guardar causa</button>
+  </div>
+</div>
+
+<!-- PANEL DETALLE -->
+<div class="detalle-bg" id="detalle-bg">
+  <div class="detalle-panel"><div id="dp-content"></div></div>
+</div>
+
+<!-- CONFIRMAR -->
+<div class="modal-bg" id="confirm-bg">
+  <div class="modal" style="max-width:420px">
+    <div class="modal-title" id="confirm-titulo">Confirmar</div>
+    <p id="confirm-texto" style="font-size:13px;color:var(--gd);line-height:1.6;margin-bottom:1.5rem"></p>
+    <div style="display:flex;gap:.8rem">
+      <button onclick="document.getElementById('confirm-bg').classList.remove('open')" style="flex:1;padding:10px;border:0.5px solid #ccc;background:transparent;font-family:var(--sans);font-size:12px;cursor:pointer">Cancelar</button>
+      <button id="confirm-btn" style="flex:1;padding:10px;border:none;background:#dc2626;color:white;font-family:var(--sans);font-size:12px;font-weight:500;cursor:pointer">Eliminar</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script>
+const PASS='Magnum248';
+const CLD_CLOUD='HACERdoqfmxvdf';
+const CLD_PRESET='magnun_docs';
+const fbCfg={apiKey:"AIzaSyBk7qvN9xWPtBsfedNIGmEPOGALfTs7yak",authDomain:"estudio-magnum.firebaseapp.com",projectId:"estudio-magnum",storageBucket:"estudio-magnum.firebasestorage.app",messagingSenderId:"922209395216",appId:"1:922209395216:web:a5cda6f0a529b12b9ee095"};
+const ESTADOS=['En trámite','Diligencias previas','Con resolución','En apelación','Archivado'];
+const BCLS={'En trámite':'b-tramite','Diligencias previas':'b-diligencias','Con resolución':'b-resolucion','En apelación':'b-apelacion','Archivado':'b-archivado'};
+const ABOGS=[{s:'ANR',n:'Dr. Rojas (MP 4531)'},{s:'EIF',n:'Dr. Flecha (MP 4640)'},{s:'FMP',n:'Dr. Palacio (MP 4730)'},{s:'PSS',n:'Dr. Servín (MP 4736)'},{s:'JPS',n:'Dr. Sánchez (MP 4482)'},{s:'VG',n:'Dr. Giménez'}];
+
+let db, cPers=[], cEst=[], bqP='', bqE='', tabActual='pers', editId=null, editCol=null, turno=0;
+
+function pedirLogin(){if(sessionStorage.getItem('magnun-auth')==='ok'){showPage('gestor');return;}document.getElementById('login-pass').value='';document.getElementById('login-error').textContent='';document.getElementById('login-bg').classList.add('open');setTimeout(()=>document.getElementById('login-pass').focus(),100);}
+function doLogin(){if(document.getElementById('login-pass').value===PASS){sessionStorage.setItem('magnun-auth','ok');document.getElementById('login-bg').classList.remove('open');showPage('gestor');}else{document.getElementById('login-error').textContent='Contraseña incorrecta';document.getElementById('login-pass').value='';document.getElementById('login-pass').focus();}}
+function doLogout(){sessionStorage.removeItem('magnun-auth');showPage('sitio');showToast('Sesión cerrada');}
+
+function initFB(){
+  try{
+    firebase.initializeApp(fbCfg);db=firebase.firestore();
+    document.getElementById('fb-dot').className='fb-status ok';
+    document.getElementById('fb-label').textContent='Firebase conectado · Tiempo real';
+    db.collection('causas').orderBy('creadoEn','desc').onSnapshot(s=>{cPers=s.docs.map(d=>({id:d.id,...d.data()}));renderPers();});
+    db.collection('causasEstudio').orderBy('creadoEn','desc').onSnapshot(s=>{cEst=s.docs.map(d=>({id:d.id,...d.data()}));renderEst();});
+    getTurno();
+  }catch(e){document.getElementById('fb-dot').className='fb-status err';document.getElementById('fb-label').textContent='Error Firebase';}
+}
+
+function showPage(p){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById('page-'+p).classList.add('active');window.scrollTo(0,0);if(p==='gestor'&&!db)initFB();}
+function nowStr(){const n=new Date();return n.getDate().toString().padStart(2,'0')+'/'+(n.getMonth()+1).toString().padStart(2,'0')+'/'+n.getFullYear()+' '+n.getHours().toString().padStart(2,'0')+':'+n.getMinutes().toString().padStart(2,'0');}
+function sig(n){const a=ABOGS.find(x=>x.n===n);return a?a.s:(n||'??').slice(0,2).toUpperCase();}
+function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800);}
+function ultMov(c){const h=c.historia||[];if(!h.length)return '—';const u=h[h.length-1];return u.fecha+' · '+u.texto.slice(0,35)+(u.texto.length>35?'...':'');}
+function extIco(n){const e=(n||'').split('.').pop().toLowerCase();if(e==='pdf')return'PDF';if(['jpg','jpeg','png','gif','webp'].includes(e))return'IMG';if(['doc','docx'].includes(e))return'DOC';if(['xls','xlsx'].includes(e))return'XLS';return e.slice(0,3).toUpperCase()||'DOC';}
+function colRef(c){return c==='est'?'causasEstudio':'causas';}
+function lista(c){return c==='est'?cEst:cPers;}
+
+function switchTab(tab,btn){tabActual=tab;document.querySelectorAll('.g-tab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.g-tab-pane').forEach(x=>x.classList.remove('active'));btn.classList.add('active');document.getElementById('tab-'+tab).classList.add('active');document.getElementById('btn-nueva').textContent=tab==='est'?'+ Nueva causa del estudio':'+ Nueva causa';}
+function renderActivo(){tabActual==='est'?renderEst():renderPers();}
+
+function filtrar(arr,bq,abog,fuero,estado){
+  let r=arr;
+  if(bq)r=r.filter(o=>(o.exp+o.caratula).toLowerCase().includes(bq.toLowerCase()));
+  if(abog)r=r.filter(o=>o.abogado===abog||o.colaborador===abog);
+  if(fuero)r=r.filter(o=>o.fuero===fuero);
+  if(estado)r=r.filter(o=>o.estado===estado);
+  return r;
+}
+function renderStats(arr,elId){
+  const tot=arr.length,act=arr.filter(o=>o.estado!=='Archivado').length,docs=arr.reduce((a,c)=>a+(c.documentos||[]).length,0);
+  document.getElementById(elId).innerHTML=`<div class="gs"><div class="gs-n">${tot}</div><div class="gs-l">Total causas</div></div><div class="gs"><div class="gs-n">${act}</div><div class="gs-l">Activas</div></div><div class="gs"><div class="gs-n">${docs}</div><div class="gs-l">Documentos</div></div>`;
+}
+
+function mkTabla(arr,esEst){
+  if(!arr.length)return'<div class="g-table-wrap"><table><tbody><tr class="loading-row"><td colspan="9">No hay causas con ese criterio</td></tr></tbody></table></div>';
+  const colAb=esEst?`<th>Responsable</th><th>Colaborador</th>`:`<th>Abogado</th>`;
+  const rows=arr.map(o=>`
+    <tr onclick="openDet('${o.id}','${esEst?'est':'pers'}')">
+      <td><span class="exp-num">${o.exp||'—'}</span></td>
+      <td style="max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${o.caratula||''}">${o.caratula||'—'}</td>
+      <td style="font-size:11px;color:var(--gd)">${o.fuero||'—'}</td>
+      <td style="font-size:11px;color:var(--gd);max-width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${o.juzgado||'—'}</td>
+      ${esEst
+        ?`<td><span style="display:flex;align-items:center;gap:5px;font-size:11px"><span class="adot">${sig(o.abogado)}</span>${(o.abogado||'').split(' (')[0]}</span></td><td><span style="display:flex;align-items:center;gap:5px;font-size:11px"><span class="adot c">${sig(o.colaborador||'')}</span>${(o.colaborador||'—').split(' (')[0]}</span></td>`
+        :`<td><span style="display:flex;align-items:center;gap:5px;font-size:11px"><span class="adot">${sig(o.abogado)}</span>${(o.abogado||'').split(' (')[0]}</span></td>`
+      }
+      <td><span class="badge ${BCLS[o.estado]||'b-tramite'}">${o.estado||'En trámite'}</span></td>
+      <td><span class="ultimo-mov">${ultMov(o)}</span></td>
+      <td onclick="event.stopPropagation()"><div class="row-actions">
+        <button class="ra" onclick="openDet('${o.id}','${esEst?'est':'pers'}')">Ver</button>
+        <button class="ra" onclick="openEdit('${o.id}','${esEst?'est':'pers'}')">Editar</button>
+        <button class="ra red" onclick="confElim('${o.id}','${esEst?'est':'pers'}','${(o.caratula||'').replace(/'/g,'')}')">Eliminar</button>
+      </div></td>
+    </tr>`).join('');
+  return`<div class="g-table-wrap"><table><thead><tr><th>Expediente</th><th>Carátula</th><th>Fuero</th><th>Juzgado</th>${colAb}<th>Estado</th><th>Último mov.</th><th>Acciones</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+}
+
+function agrupar(arr,campo,esEst){
+  const g={};
+  arr.forEach(o=>{const k=campo==='abogado'?(o.abogado||'Sin asignar'):(o.fuero||'Sin fuero');if(!g[k])g[k]=[];g[k].push(o);});
+  return Object.keys(g).sort().map(k=>`<div class="grupo-header">${k}<span class="grupo-count">${g[k].length} causa${g[k].length!==1?'s':''}</span></div>${mkTabla(g[k],esEst)}`).join('');
+}
+
+function renderPers(){
+  const arr=filtrar(cPers,bqP,document.getElementById('fAbogP')?.value||'',document.getElementById('fFuerP')?.value||'',document.getElementById('fEstP')?.value||'');
+  renderStats(arr,'stats-pers');
+  const ag=document.getElementById('gAgrupP')?.value||'';
+  document.getElementById('tbl-pers').innerHTML=ag?agrupar(arr,ag,false):mkTabla(arr,false);
+}
+function renderEst(){
+  const arr=filtrar(cEst,bqE,document.getElementById('fAbogE')?.value||'',document.getElementById('fFuerE')?.value||'',document.getElementById('fEstE')?.value||'');
+  renderStats(arr,'stats-est');
+  const ag=document.getElementById('gAgrupE')?.value||'';
+  document.getElementById('tbl-est').innerHTML=ag?agrupar(arr,ag,true):mkTabla(arr,true);
+}
+
+async function getTurno(){try{const d=await db.collection('config').doc('sorteo').get();if(d.exists)turno=d.data().turno||0;}catch(e){}}
+async function avTurno(){turno++;try{await db.collection('config').doc('sorteo').set({turno});}catch(e){}}
+function sortearRandom(){
+  // Sorteo aleatorio puro — elige responsable y colaborador al azar cada vez
+  const iResp=Math.floor(Math.random()*ABOGS.length);
+  const resp=ABOGS[iResp].n;
+  const rest=ABOGS.filter((_,i)=>i!==iResp);
+  const colab=rest[Math.floor(Math.random()*rest.length)].n;
+  return {resp,colab};
+}
+function sortColab(r){const rest=ABOGS.filter(a=>a.n!==r);return rest[Math.floor(Math.random()*rest.length)].n;}
+
+async function openModal(){
+  editId=null;editCol=null;
+  document.getElementById('modal-titulo').textContent=tabActual==='est'?'Nueva causa del estudio':'Nueva causa';
+  document.getElementById('m-submit').textContent='Guardar causa';
+  ['m-exp','m-caratula','m-cliente','m-juzgado','m-obs','m-quien'].forEach(id=>document.getElementById(id).value='');
+  if(tabActual==='est'){
+    document.getElementById('sec-abog').style.display='none';
+    document.getElementById('sec-sorteo').style.display='block';
+    document.getElementById('sorteo-nueva').style.display='block';
+    document.getElementById('sec-edit-colab').style.display='none';
+    // Sorteo aleatorio puro cada vez que se abre
+    const {resp,colab}=sortearRandom();
+    document.getElementById('m-resp-txt').textContent=resp;
+    const sel=document.getElementById('m-colab');
+    sel.innerHTML=ABOGS.filter(a=>a.n!==resp).map(a=>`<option>${a.n}</option>`).join('');
+    sel.value=colab;
+  }else{
+    document.getElementById('sec-abog').style.display='block';
+    document.getElementById('sec-sorteo').style.display='none';
+  }
+  document.getElementById('modal-bg').classList.add('open');
+}
+
+function openEdit(id,col){
+  const o=lista(col).find(x=>x.id===id);if(!o)return;
+  editId=id;editCol=col;
+  document.getElementById('modal-titulo').textContent='Editar causa';
+  document.getElementById('m-submit').textContent='Guardar cambios';
+  document.getElementById('m-exp').value=o.exp||'';
+  document.getElementById('m-caratula').value=o.caratula||'';
+  document.getElementById('m-cliente').value=o.cliente||'';
+  document.getElementById('m-juzgado').value=o.juzgado||'';
+  document.getElementById('m-obs').value=o.obs||'';
+  document.getElementById('m-fuero').value=o.fuero||'Penal';
+  document.getElementById('m-quien').value='';
+  if(col==='est'){
+    document.getElementById('sec-abog').style.display='none';
+    document.getElementById('sec-sorteo').style.display='block';
+    document.getElementById('sorteo-nueva').style.display='none';
+    document.getElementById('sec-edit-colab').style.display='block';
+    document.getElementById('m-resp-edit').value=o.abogado||'';
+    const sc=document.getElementById('m-colab-edit');
+    sc.innerHTML=ABOGS.map(a=>`<option>${a.n}</option>`).join('');
+    sc.value=o.colaborador||ABOGS[0].n;
+  }else{
+    document.getElementById('sec-abog').style.display='block';
+    document.getElementById('sec-sorteo').style.display='none';
+    document.getElementById('m-abogado').value=o.abogado||'Dr. Rojas (MP 4531)';
+  }
+  document.getElementById('modal-bg').classList.add('open');
+}
+function closeModal(){document.getElementById('modal-bg').classList.remove('open');}
+
+async function guardarCausa(){
+  const exp=document.getElementById('m-exp').value.trim();
+  const caratula=document.getElementById('m-caratula').value.trim();
+  const cliente=document.getElementById('m-cliente').value.trim();
+  if(!exp||!caratula||!cliente){showToast('Completá expediente, carátula y cliente');return;}
+  const juzgado=document.getElementById('m-juzgado').value.trim();
+  const fuero=document.getElementById('m-fuero').value;
+  const obs=document.getElementById('m-obs').value.trim();
+  const quien=document.getElementById('m-quien').value.trim()||'Sin especificar';
+  const btn=document.getElementById('m-submit');
+  btn.disabled=true;btn.textContent='Guardando...';
+  const col=editCol||tabActual;
+  try{
+    if(editId){
+      const o=lista(col).find(x=>x.id===editId);
+      const extra=col==='est'?{colaborador:document.getElementById('m-colab-edit').value}:{abogado:document.getElementById('m-abogado').value};
+      const hist=[...(o.historia||[]),{fecha:nowStr(),quien,texto:'Datos editados.',tipo:'mov'}];
+      await db.collection(colRef(col)).doc(editId).update({exp,caratula,cliente,juzgado,fuero,obs,...extra,historia:hist,actualizadoEn:firebase.firestore.FieldValue.serverTimestamp()});
+      showToast('Causa actualizada');
+    }else if(tabActual==='est'){
+      const resp=document.getElementById('m-resp-txt').textContent;
+      const colab=document.getElementById('m-colab').value;
+      await db.collection('causasEstudio').add({exp,caratula,cliente,fuero,juzgado,abogado:resp,colaborador:colab,estado:'En trámite',obs,documentos:[],audiencias:[],honorarios:null,
+        historia:[{fecha:nowStr(),quien,texto:'Causa creada. Responsable: '+resp+'. Colaborador: '+colab+(obs?' — '+obs:''),tipo:'mov'}],
+        creadoEn:firebase.firestore.FieldValue.serverTimestamp(),actualizadoEn:firebase.firestore.FieldValue.serverTimestamp()});
+      showToast('Causa asignada a '+resp.split(' (')[0]);
+    }else{
+      const abogado=document.getElementById('m-abogado').value;
+      await db.collection('causas').add({exp,caratula,cliente,fuero,juzgado,abogado,estado:'En trámite',obs,documentos:[],audiencias:[],
+        historia:[{fecha:nowStr(),quien,texto:'Causa creada. '+(obs||''),tipo:'mov'}],
+        creadoEn:firebase.firestore.FieldValue.serverTimestamp(),actualizadoEn:firebase.firestore.FieldValue.serverTimestamp()});
+      showToast('Causa guardada');
+    }
+    closeModal();
+  }catch(e){showToast('Error: '+e.message);}
+  btn.disabled=false;btn.textContent=editId?'Guardar cambios':'Guardar causa';
+}
+
+function openDet(id,col){
+  const o=lista(col).find(x=>x.id===id);if(!o)return;
+  const hist=o.historia||[],docs=o.documentos||[],auds=o.audiencias||[],esEst=col==='est';
+  document.getElementById('dp-content').innerHTML=`
+    <button class="dp-close" onclick="closeDet()">✕</button>
+    <div style="clear:both;margin-bottom:1rem"></div>
+    ${esEst?'<div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:#fffbeb;color:#92400e;padding:4px 10px;display:inline-block;margin-bottom:.8rem">Causa del Estudio</div>':''}
+    <div class="dp-exp">Expediente ${o.exp||'—'}</div>
+    <div class="dp-title">${o.caratula||'Sin carátula'}</div>
+    <div class="dp-grid">
+      <div class="dp-field"><div class="dp-fl">Cliente</div><div class="dp-fv">${o.cliente||'—'}</div></div>
+      <div class="dp-field"><div class="dp-fl">Fuero</div><div class="dp-fv">${o.fuero||'—'}</div></div>
+      <div class="dp-field"><div class="dp-fl">Juzgado / Tribunal</div><div class="dp-fv">${o.juzgado||'—'}</div></div>
+      <div class="dp-field"><div class="dp-fl">Estado</div><div class="dp-fv"><span class="badge ${BCLS[o.estado]||'b-tramite'}">${o.estado||'En trámite'}</span></div></div>
+      <div class="dp-field" style="border-left:3px solid #166534"><div class="dp-fl">Responsable</div><div class="dp-fv" style="font-weight:500">${o.abogado||'—'}</div></div>
+      ${esEst?`<div class="dp-field" style="border-left:3px solid #0369a1"><div class="dp-fl">Colaborador</div><div class="dp-fv" style="color:#0369a1">${o.colaborador||'—'}</div></div>`:''}
+      <div class="dp-field" style="grid-column:span 2"><div class="dp-fl">Observaciones</div><div class="dp-fv" style="font-size:12px">${o.obs||'—'}</div></div>
+    </div>
+    <div class="dp-section">Convenio de honorarios</div>
+    ${renderHonorarios(o,col)}
+    <div class="dp-section">Audiencias (${auds.length})</div>
+    ${auds.length?auds.map((a,i)=>`<div class="aud-item"><div class="aud-fecha">${a.fechaDisplay}</div><div class="aud-info"><div class="aud-desc">${a.descripcion}</div><div class="aud-meta">${a.hora} hs · ${a.quien}</div></div><button class="aud-cal" onclick="abrCal('${o.caratula.replace(/'/g,'').replace(/"/g,'')}','${a.fechaISO}','${a.hora}','${a.descripcion.replace(/'/g,'').replace(/"/g,'')}')">+ Google Cal</button><button class="aud-del" onclick="elimAud('${o.id}','${col}',${i})">✕</button></div>`).join(''):'<p style="font-size:12px;color:var(--gm);margin-bottom:.8rem">Sin audiencias.</p>'}
+    <div style="background:#f0f4ff;padding:1rem;margin-bottom:1rem;border:0.5px solid #c7d2fe">
+      <div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#4f46e5;font-weight:500;margin-bottom:.8rem">Agregar audiencia</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:.6rem">
+        <div><label style="font-size:10px;text-transform:uppercase;color:var(--gd);display:block;margin-bottom:3px">Fecha</label><input type="date" id="af-${o.id}" style="width:100%;padding:7px 9px;border:0.5px solid #c7d2fe;font-family:var(--sans);font-size:12px;outline:none;background:white"></div>
+        <div><label style="font-size:10px;text-transform:uppercase;color:var(--gd);display:block;margin-bottom:3px">Hora</label><input type="time" id="ah-${o.id}" style="width:100%;padding:7px 9px;border:0.5px solid #c7d2fe;font-family:var(--sans);font-size:12px;outline:none;background:white"></div>
+      </div>
+      <div style="margin-bottom:.6rem"><label style="font-size:10px;text-transform:uppercase;color:var(--gd);display:block;margin-bottom:3px">Descripción</label><input type="text" id="ad-${o.id}" style="width:100%;padding:7px 9px;border:0.5px solid #c7d2fe;font-family:var(--sans);font-size:12px;outline:none;background:white" placeholder="Ej: Audiencia de conciliación..."></div>
+      <div style="margin-bottom:.8rem"><label style="font-size:10px;text-transform:uppercase;color:var(--gd);display:block;margin-bottom:3px">Cargada por</label><input type="text" id="aq-${o.id}" style="width:100%;padding:7px 9px;border:0.5px solid #c7d2fe;font-family:var(--sans);font-size:12px;outline:none;background:white" placeholder="Tu nombre"></div>
+      <button onclick="guardarAud('${o.id}','${col}')" style="width:100%;padding:9px;background:#4f46e5;color:white;font-family:var(--sans);font-size:12px;font-weight:500;border:none;cursor:pointer">Guardar audiencia</button>
+    </div>
+    <div class="dp-section">Documentales (${docs.length})</div>
+    ${docs.length?docs.map((d,i)=>`<div class="doc-item"><div class="doc-icon">${extIco(d.nombre)}</div><div class="doc-info"><div class="doc-nombre">${d.nombre}</div><div class="doc-meta">${d.fecha} · ${d.quien}</div></div><a class="doc-link" href="${d.url}" target="_blank">Ver</a><button onclick="elimDoc('${o.id}','${col}',${i})" style="font-size:10px;padding:3px 8px;border:0.5px solid #fca5a5;background:transparent;color:#dc2626;cursor:pointer;font-family:var(--sans);margin-left:6px">✕</button></div>`).join(''):'<p style="font-size:12px;color:var(--gm);margin-bottom:.8rem">Sin documentales.</p>'}
+    <div class="upload-area"><input type="file" id="fi-${o.id}" multiple onchange="subirArch('${o.id}','${col}',this)"><label class="upload-label" for="fi-${o.id}">+ Cargar documental (PDF, imagen, Word...)</label><div class="upload-progress" id="up-${o.id}"></div></div>
+    <div class="mrow" style="margin-bottom:.5rem"><label style="font-size:10px;text-transform:uppercase;color:var(--gd);display:block;margin-bottom:4px;font-weight:500">Descripción del documento</label><input type="text" id="dd-${o.id}" style="width:100%;padding:8px 10px;border:0.5px solid #d0cec8;font-family:var(--sans);font-size:12px;outline:none;background:#fafafa" placeholder="Ej: Escrito de demanda, Proveído..."></div>
+    <div class="mrow" style="margin-bottom:1rem"><label style="font-size:10px;text-transform:uppercase;color:var(--gd);display:block;margin-bottom:4px;font-weight:500">Cargado por</label><input type="text" id="dq-${o.id}" style="width:100%;padding:8px 10px;border:0.5px solid #d0cec8;font-family:var(--sans);font-size:12px;outline:none;background:#fafafa" placeholder="Tu nombre"></div>
+    <div class="dp-section">Historial (${hist.length})</div>
+    ${hist.length?hist.slice().reverse().map(h=>`<div class="hist-item ${h.tipo==='doc'?'hi-doc':h.tipo==='prov'?'hi-prov':''}"><div class="hi-meta">${h.fecha} — <strong>${h.quien}</strong></div><div class="hi-text">${h.texto}</div></div>`).join(''):'<p style="font-size:12px;color:var(--gm)">Sin movimientos.</p>'}
+    <div class="dp-section">Registrar movimiento</div>
+    <div class="update-form">
+      <label>Tipo</label><select id="dt"><option value="mov">Movimiento / gestión</option><option value="prov">Proveído del juzgado</option></select>
+      <label>Nuevo estado</label><select id="de">${ESTADOS.map(e=>`<option ${e===o.estado?'selected':''}>${e}</option>`).join('')}</select>
+      <label>Descripción</label><textarea id="dn" placeholder="Qué ocurrió, resolución del juzgado..."></textarea>
+      <label>Registrado por</label><input type="text" id="dq2" placeholder="Tu nombre o iniciales">
+      <button class="msub" id="ds" onclick="regMov('${o.id}','${col}')">Guardar registro</button>
+    </div>`;
+  document.getElementById('detalle-bg').classList.add('open');
+}
+
+async function regMov(id,col){
+  const o=lista(col).find(x=>x.id===id);if(!o)return;
+  const estado=document.getElementById('de').value,nota=document.getElementById('dn').value.trim(),quien=document.getElementById('dq2').value.trim()||'Sin especificar',tipo=document.getElementById('dt').value;
+  if(!nota){showToast('Escribí una descripción');return;}
+  const btn=document.getElementById('ds');btn.disabled=true;btn.textContent='Guardando...';
+  const cambio=estado!==o.estado?` [Estado: ${o.estado} → ${estado}]`:'';
+  const hist=[...(o.historia||[]),{fecha:nowStr(),quien,texto:nota+cambio,tipo}];
+  try{await db.collection(colRef(col)).doc(id).update({estado,historia:hist,actualizadoEn:firebase.firestore.FieldValue.serverTimestamp()});showToast('Registro guardado');setTimeout(()=>openDet(id,col),300);}catch(e){showToast('Error: '+e.message);}
+  btn.disabled=false;btn.textContent='Guardar registro';
+}
+
+async function subirArch(id,col,input){
+  const files=Array.from(input.files);if(!files.length)return;
+  const desc=document.getElementById('dd-'+id).value.trim(),quien=document.getElementById('dq-'+id).value.trim()||'Sin especificar',progEl=document.getElementById('up-'+id);
+  progEl.textContent='Subiendo '+files.length+' archivo(s)...';
+  const o=lista(col).find(x=>x.id===id);if(!o)return;
+  const nd=[...(o.documentos||[])],nh=[...(o.historia||[])];
+  let sub=0;
+  for(const f of files){
+    try{const fd=new FormData();fd.append('file',f);fd.append('upload_preset',CLD_PRESET);fd.append('resource_type','auto');
+      const res=await fetch(`https://api.cloudinary.com/v1_1/${CLD_CLOUD}/auto/upload`,{method:'POST',body:fd});
+      const data=await res.json();
+      if(data.secure_url){const nom=desc||f.name;nd.push({nombre:nom,url:data.secure_url,fecha:nowStr(),quien,tipo:f.type});nh.push({fecha:nowStr(),quien,texto:'Documental cargada: '+nom,tipo:'doc'});sub++;}
+    }catch(e){showToast('Error al subir '+f.name);}
+  }
+  if(sub>0){try{await db.collection(colRef(col)).doc(id).update({documentos:nd,historia:nh,actualizadoEn:firebase.firestore.FieldValue.serverTimestamp()});showToast(sub+' archivo(s) cargado(s)');progEl.textContent='';setTimeout(()=>openDet(id,col),400);}catch(e){showToast('Error: '+e.message);}}
+  else{progEl.textContent='Error al subir';}
+  input.value='';
+}
+
+async function guardarAud(id,col){
+  const o=lista(col).find(x=>x.id===id);if(!o)return;
+  const fecha=document.getElementById('af-'+id).value,hora=document.getElementById('ah-'+id).value,desc=document.getElementById('ad-'+id).value.trim(),quien=document.getElementById('aq-'+id).value.trim()||'Sin especificar';
+  if(!fecha||!hora||!desc){showToast('Completá fecha, hora y descripción');return;}
+  const p=fecha.split('-'),fd=p[2]+'/'+p[1]+'/'+p[0];
+  const na=[...(o.audiencias||[]),{fechaISO:fecha,fechaDisplay:fd,hora,descripcion:desc,quien,cargadaEn:nowStr()}];
+  const nh=[...(o.historia||[]),{fecha:nowStr(),quien,texto:'Audiencia: '+desc+' — '+fd+' '+hora+'hs',tipo:'mov'}];
+  try{await db.collection(colRef(col)).doc(id).update({audiencias:na,historia:nh,actualizadoEn:firebase.firestore.FieldValue.serverTimestamp()});showToast('Audiencia guardada');setTimeout(()=>openDet(id,col),300);}catch(e){showToast('Error: '+e.message);}
+}
+
+function conf(titulo,texto,fn){document.getElementById('confirm-titulo').textContent=titulo;document.getElementById('confirm-texto').textContent=texto;document.getElementById('confirm-btn').onclick=fn;document.getElementById('confirm-bg').classList.add('open');}
+
+function elimAud(id,col,idx){const o=lista(col).find(x=>x.id===id);if(!o)return;const a=(o.audiencias||[])[idx];if(!a)return;conf('Eliminar audiencia','¿Eliminar la audiencia "'+a.descripcion+'" del '+a.fechaDisplay+'?',async()=>{document.getElementById('confirm-bg').classList.remove('open');const na=[...(o.audiencias||[])];na.splice(idx,1);try{await db.collection(colRef(col)).doc(id).update({audiencias:na,actualizadoEn:firebase.firestore.FieldValue.serverTimestamp()});showToast('Audiencia eliminada');setTimeout(()=>openDet(id,col),300);}catch(e){showToast('Error: '+e.message);}});}
+function elimDoc(id,col,idx){const o=lista(col).find(x=>x.id===id);if(!o)return;const d=(o.documentos||[])[idx];if(!d)return;conf('Eliminar documental','¿Eliminar "'+d.nombre+'"?',async()=>{document.getElementById('confirm-bg').classList.remove('open');const nd=[...(o.documentos||[])];nd.splice(idx,1);const nh=[...(o.historia||[]),{fecha:nowStr(),quien:'Sistema',texto:'Documental eliminada: '+d.nombre,tipo:'mov'}];try{await db.collection(colRef(col)).doc(id).update({documentos:nd,historia:nh,actualizadoEn:firebase.firestore.FieldValue.serverTimestamp()});showToast('Documental eliminada');setTimeout(()=>openDet(id,col),300);}catch(e){showToast('Error: '+e.message);}});}
+function confElim(id,col,car){conf('Eliminar causa','¿Eliminar la causa "'+car+'"? Esta acción no se puede deshacer.',async()=>{document.getElementById('confirm-bg').classList.remove('open');try{await db.collection(colRef(col)).doc(id).delete();showToast('Causa eliminada');}catch(e){showToast('Error: '+e.message);}});}
+
+function abrCal(car,fISO,hora,desc){const[a,m,d]=fISO.split('-');const[hh,mm]=hora.split(':');const ini=a+m+d+'T'+hh+mm+'00';const finH=(parseInt(hh)+1).toString().padStart(2,'0');const fin=a+m+d+'T'+finH+mm+'00';window.open(`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('Audiencia: '+car)}&dates=${ini}/${fin}&details=${encodeURIComponent(desc+' — Estudio Jurídico Magnun')}&reminder=1440&reminder=60`,'_blank');showToast('Abriendo Google Calendar...');}
+
+/* ── HONORARIOS ── */
+function renderHonorarios(o,col){
+  const h=o.honorarios,esEst=col==='est';
+  const fmt=n=>'$'+Number(n).toLocaleString('es-AR',{minimumFractionDigits:2,maximumFractionDigits:2});
+  if(h&&h.guardado){
+    const m=h.monto||0;
+    return`<div class="hon-saved">
+      <div class="hon-saved-titulo">Convenio registrado · ${h.fecha||''}</div>
+      <div style="font-size:12px;margin-bottom:.7rem;line-height:1.7">
+        <strong>Cálculo:</strong> ${h.tipoCalculo==='pct'?'Porcentaje '+h.porcentaje+'% sobre acuerdo de $'+Number(h.montoAcuerdo||0).toLocaleString('es-AR'):'Monto fijo'}<br>
+        <strong>Total honorarios:</strong> ${fmt(m)}<br>
+        <strong>Regulación judicial:</strong> ${h.incluye_regulacion==='si'?'Incluida en el acuerdo':'Aparte — a determinar por el juez'}
+        ${h.notas?'<br><strong>Notas:</strong> '+h.notas:''}
+      </div>
+      <div class="hon-dist">
+        <div class="hon-parte"><div class="hon-pct">50%</div><div class="hon-lbl">Fondo del estudio</div><div class="hon-monto">${fmt(m*.5)}</div></div>
+        <div class="hon-parte"><div class="hon-pct">25%</div><div class="hon-lbl">Responsable</div><div class="hon-monto">${fmt(m*.25)}</div></div>
+        <div class="hon-parte"><div class="hon-pct">25%</div><div class="hon-lbl">${esEst?'Colaborador':'Abogado'}</div><div class="hon-monto">${fmt(m*.25)}</div></div>
+      </div>
+      <button onclick="editarHon('${o.id}','${col}')" style="margin-top:.8rem;font-size:11px;padding:6px 14px;border:0.5px solid #d0cec8;background:transparent;cursor:pointer;font-family:var(--sans)">Modificar convenio</button>
+    </div>`;
+  }
+  return`<div class="hon-box">
+    <div class="hon-titulo">Registrar convenio de honorarios</div>
+    <div class="hon-form">
+      <label>Tipo de cálculo</label>
+      <select id="ht-${o.id}" onchange="calcHon('${o.id}','${col}')">
+        <option value="pct">Porcentaje del monto total del acuerdo</option>
+        <option value="fijo">Monto fijo</option>
+      </select>
+      <div id="hpr-${o.id}">
+        <label>Porcentaje acordado (%)</label>
+        <input type="number" id="hp-${o.id}" min="1" max="100" value="${esEst?25:10}" oninput="calcHon('${o.id}','${col}')" placeholder="Ej: 25">
+        <label>Monto total del acuerdo ($)</label>
+        <input type="number" id="ha-${o.id}" min="0" oninput="calcHon('${o.id}','${col}')" placeholder="Ej: 1000000">
+      </div>
+      <div id="hfr-${o.id}" style="display:none">
+        <label>Monto de honorarios ($)</label>
+        <input type="number" id="hf-${o.id}" min="0" oninput="calcHon('${o.id}','${col}')" placeholder="Ej: 250000">
+      </div>
+      <label>Regulación judicial</label>
+      <select id="hr-${o.id}">
+        <option value="incluida">Incluida en el acuerdo (honorarios totales)</option>
+        <option value="aparte">Aparte — se suma lo que regule el juez</option>
+      </select>
+      <label>Notas adicionales</label>
+      <input type="text" id="hn-${o.id}" placeholder="Ej: Acuerdo firmado el 15/04/2025...">
+    </div>
+    <div id="hprev-${o.id}" style="margin-top:.8rem"></div>
+    <button onclick="guardarHon('${o.id}','${col}')" style="margin-top:.8rem;width:100%;padding:9px;background:var(--black);color:white;font-family:var(--sans);font-size:12px;font-weight:500;border:none;cursor:pointer">Guardar convenio</button>
+  </div>`;
+}
+
+function calcHon(id,col){
+  const tipo=document.getElementById('ht-'+id)?.value;
+  if(!tipo)return;
+  document.getElementById('hpr-'+id).style.display=tipo==='fijo'?'none':'block';
+  document.getElementById('hfr-'+id).style.display=tipo==='fijo'?'block':'none';
+  let m=0;
+  if(tipo==='pct'){const p=parseFloat(document.getElementById('hp-'+id)?.value)||0,ac=parseFloat(document.getElementById('ha-'+id)?.value)||0;m=ac*p/100;}
+  else{m=parseFloat(document.getElementById('hf-'+id)?.value)||0;}
+  const prev=document.getElementById('hprev-'+id);if(!prev)return;
+  if(!m){prev.innerHTML='';return;}
+  const fmt=n=>'$'+Number(n).toLocaleString('es-AR',{minimumFractionDigits:2,maximumFractionDigits:2});
+  const esEst=col==='est';
+  prev.innerHTML=`<div class="hon-dist">
+    <div class="hon-parte"><div class="hon-pct">50%</div><div class="hon-lbl">Fondo estudio</div><div class="hon-monto">${fmt(m*.5)}</div></div>
+    <div class="hon-parte"><div class="hon-pct">25%</div><div class="hon-lbl">Responsable</div><div class="hon-monto">${fmt(m*.25)}</div></div>
+    <div class="hon-parte"><div class="hon-pct">25%</div><div class="hon-lbl">${esEst?'Colaborador':'Abogado'}</div><div class="hon-monto">${fmt(m*.25)}</div></div>
+  </div><div style="font-size:11px;color:var(--gd);margin-top:.5rem;text-align:center">Total honorarios: ${fmt(m)}</div>`;
+}
+
+async function guardarHon(id,col){
+  const o=lista(col).find(x=>x.id===id);if(!o)return;
+  const tipo=document.getElementById('ht-'+id).value;
+  let monto=0,porcentaje=null,montoAcuerdo=null;
+  if(tipo==='pct'){porcentaje=parseFloat(document.getElementById('hp-'+id).value)||0;montoAcuerdo=parseFloat(document.getElementById('ha-'+id).value)||0;monto=montoAcuerdo*porcentaje/100;}
+  else{monto=parseFloat(document.getElementById('hf-'+id).value)||0;}
+  if(!monto){showToast('Ingresá un monto válido');return;}
+  const incluye_regulacion=document.getElementById('hr-'+id).value==='incluida'?'si':'no';
+  const notas=document.getElementById('hn-'+id).value.trim();
+  const honorarios={guardado:true,tipoCalculo:tipo,monto,porcentaje,montoAcuerdo,incluye_regulacion,notas,fecha:nowStr()};
+  const hist=[...(o.historia||[]),{fecha:nowStr(),quien:'Sistema',texto:'Convenio de honorarios registrado. Total: $'+monto.toLocaleString('es-AR'),tipo:'mov'}];
+  try{await db.collection(colRef(col)).doc(id).update({honorarios,historia:hist,actualizadoEn:firebase.firestore.FieldValue.serverTimestamp()});showToast('Convenio guardado');setTimeout(()=>openDet(id,col),300);}catch(e){showToast('Error: '+e.message);}
+}
+
+function editarHon(id,col){const o=lista(col).find(x=>x.id===id);if(!o)return;if(o.honorarios)o.honorarios.guardado=false;openDet(id,col);}
+
+function closeDet(){document.getElementById('detalle-bg').classList.remove('open');}
+
+document.getElementById('modal-bg').addEventListener('click',function(e){if(e.target===this)closeModal();});
+document.getElementById('detalle-bg').addEventListener('click',function(e){if(e.target===this)closeDet();});
+document.getElementById('login-bg').addEventListener('click',function(e){if(e.target===this)this.classList.remove('open');});
+document.getElementById('confirm-bg').addEventListener('click',function(e){if(e.target===this)this.classList.remove('open');});
+window.addEventListener('load',()=>{initFB();});
+</script>
+</body>
+</html>

@@ -1,24 +1,14 @@
 {
-  "name": "Gestor de Causas · Magnun",
-  "short_name": "Magnun",
-  "description": "Gestor interno del Estudio Jurídico Magnun",
+  "name": "Gestor de Causas · Magnum",
+  "short_name": "Magnum",
+  "description": "Gestor interno del Estudio Jurídico Magnum",
   "start_url": "./gestor.html",
   "display": "standalone",
   "background_color": "#0a0a0a",
   "theme_color": "#0a0a0a",
   "orientation": "any",
   "icons": [
-    {
-      "src": "icon-magnun.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "icon-magnun-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
+    {"src": "icon-magnum.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable"},
+    {"src": "icon-magnum-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}
   ]
 }

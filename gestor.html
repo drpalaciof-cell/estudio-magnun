@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gestor · Magnun</title>
-  <meta name="description" content="Gestor de Causas interno — Estudio Jurídico Magnun">
+  <title>Gestor · Magnum</title>
+  <meta name="description" content="Gestor de Causas interno — Estudio Jurídico Magnum">
   <meta name="theme-color" content="#0a0a0a">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="Magnun">
-  <link rel="apple-touch-icon" href="icon-magnun.png">
+  <meta name="apple-mobile-web-app-title" content="Magnum">
+  <link rel="apple-touch-icon" href="icon-magnum.png">
   <link rel="manifest" href="manifest.json">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -155,7 +155,7 @@
 
 <nav>
   <div class="logo-wrap">
-    <div class="logo-main">MAGNUN</div>
+    <div class="logo-main">MAGNUM</div>
     <div class="logo-sub">Gestor interno</div>
   </div>
   <div class="nav-right">
@@ -166,7 +166,7 @@
 
 <div class="login-screen" id="login-screen">
   <div class="login-box">
-    <div class="login-logo">MAGNUN</div>
+    <div class="login-logo">MAGNUM</div>
     <div class="login-sub">Acceso interno · Gestor de causas</div>
     <label class="login-label">Contraseña</label>
     <input class="login-input" type="password" id="login-pass" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()">
@@ -270,16 +270,16 @@
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 <script>
-const PASS='Magnum248',CLD_CLOUD='HACERdoqfmxvdf',CLD_PRESET='magnun_docs';
+const PASS='Magnum248',CLD_CLOUD='HACERdoqfmxvdf',CLD_PRESET='magnum_docs';
 const fbCfg={apiKey:"AIzaSyBk7qvN9xWPtBsfedNIGmEPOGALfTs7yak",authDomain:"estudio-magnum.firebaseapp.com",projectId:"estudio-magnum",storageBucket:"estudio-magnum.firebasestorage.app",messagingSenderId:"922209395216",appId:"1:922209395216:web:a5cda6f0a529b12b9ee095"};
 const ESTADOS=['En trámite','Diligencias previas','Con resolución','En apelación','Archivado'];
 const BCLS={'En trámite':'b-tramite','Diligencias previas':'b-diligencias','Con resolución':'b-resolucion','En apelación':'b-apelacion','Archivado':'b-archivado'};
 const ABOGS=[{s:'ANR',n:'Dr. Rojas (MP 4531)'},{s:'EIF',n:'Dr. Flecha (MP 4640)'},{s:'FMP',n:'Dr. Palacio (MP 4730)'},{s:'PSS',n:'Dr. Servín (MP 4736)'},{s:'JPS',n:'Dr. Sánchez (MP 4482)'},{s:'VG',n:'Dr. Giménez'}];
 let db,cPers=[],cEst=[],bqP='',bqE='',tabActual='pers',editId=null,editCol=null;
 
-function doLogin(){if(document.getElementById('login-pass').value===PASS){sessionStorage.setItem('magnun-auth','ok');mostrarGestor();}else{document.getElementById('login-error').textContent='Contraseña incorrecta';document.getElementById('login-pass').value='';document.getElementById('login-pass').focus();}}
+function doLogin(){if(document.getElementById('login-pass').value===PASS){sessionStorage.setItem('magnum-auth','ok');mostrarGestor();}else{document.getElementById('login-error').textContent='Contraseña incorrecta';document.getElementById('login-pass').value='';document.getElementById('login-pass').focus();}}
 function mostrarGestor(){document.getElementById('login-screen').style.display='none';document.getElementById('gestor-main').classList.add('visible');document.getElementById('nav-logout').style.display='block';if(!db)initFB();}
-function doLogout(){sessionStorage.removeItem('magnun-auth');document.getElementById('login-screen').style.display='flex';document.getElementById('gestor-main').classList.remove('visible');document.getElementById('nav-logout').style.display='none';document.getElementById('login-pass').value='';showToast('Sesión cerrada');}
+function doLogout(){sessionStorage.removeItem('magnum-auth');document.getElementById('login-screen').style.display='flex';document.getElementById('gestor-main').classList.remove('visible');document.getElementById('nav-logout').style.display='none';document.getElementById('login-pass').value='';showToast('Sesión cerrada');}
 
 function initFB(){try{if(!firebase.apps.length)firebase.initializeApp(fbCfg);db=firebase.firestore();document.getElementById('fb-dot').className='fb-status ok';document.getElementById('fb-label').textContent='Firebase conectado · Tiempo real';db.collection('causas').orderBy('creadoEn','desc').onSnapshot(s=>{cPers=s.docs.map(d=>({id:d.id,...d.data()}));renderPers();});db.collection('causasEstudio').orderBy('creadoEn','desc').onSnapshot(s=>{cEst=s.docs.map(d=>({id:d.id,...d.data()}));renderEst();});}catch(e){document.getElementById('fb-dot').className='fb-status err';document.getElementById('fb-label').textContent='Error Firebase';}}
 
@@ -316,7 +316,7 @@ function conf(titulo,texto,fn){document.getElementById('confirm-titulo').textCon
 function elimAud(id,col,idx){const o=lista(col).find(x=>x.id===id);if(!o)return;const a=(o.audiencias||[])[idx];if(!a)return;conf('Eliminar audiencia','¿Eliminar "'+a.descripcion+'" del '+a.fechaDisplay+'?',async()=>{document.getElementById('confirm-bg').classList.remove('open');const na=[...(o.audiencias||[])];na.splice(idx,1);try{await db.collection(colRef(col)).doc(id).update({audiencias:na,actualizadoEn:firebase.firestore.FieldValue.serverTimestamp()});showToast('Audiencia eliminada');setTimeout(()=>openDet(id,col),300);}catch(e){showToast('Error: '+e.message);}});}
 function elimDoc(id,col,idx){const o=lista(col).find(x=>x.id===id);if(!o)return;const d=(o.documentos||[])[idx];if(!d)return;conf('Eliminar documental','¿Eliminar "'+d.nombre+'"?',async()=>{document.getElementById('confirm-bg').classList.remove('open');const nd=[...(o.documentos||[])];nd.splice(idx,1);const nh=[...(o.historia||[]),{fecha:nowStr(),quien:'Sistema',texto:'Documental eliminada: '+d.nombre,tipo:'mov'}];try{await db.collection(colRef(col)).doc(id).update({documentos:nd,historia:nh,actualizadoEn:firebase.firestore.FieldValue.serverTimestamp()});showToast('Documental eliminada');setTimeout(()=>openDet(id,col),300);}catch(e){showToast('Error: '+e.message);}});}
 function confElim(id,col,car){conf('Eliminar causa','¿Eliminar "'+car+'"? Esta acción no se puede deshacer.',async()=>{document.getElementById('confirm-bg').classList.remove('open');try{await db.collection(colRef(col)).doc(id).delete();showToast('Causa eliminada');}catch(e){showToast('Error: '+e.message);}});}
-function abrCal(car,fISO,hora,desc){const[a,m,d]=fISO.split('-');const[hh,mm]=hora.split(':');const ini=a+m+d+'T'+hh+mm+'00';const finH=(parseInt(hh)+1).toString().padStart(2,'0');const fin=a+m+d+'T'+finH+mm+'00';window.open(`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('Audiencia: '+car)}&dates=${ini}/${fin}&details=${encodeURIComponent(desc+' — Estudio Jurídico Magnun')}&reminder=1440&reminder=60`,'_blank');showToast('Abriendo Google Calendar...');}
+function abrCal(car,fISO,hora,desc){const[a,m,d]=fISO.split('-');const[hh,mm]=hora.split(':');const ini=a+m+d+'T'+hh+mm+'00';const finH=(parseInt(hh)+1).toString().padStart(2,'0');const fin=a+m+d+'T'+finH+mm+'00';window.open(`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('Audiencia: '+car)}&dates=${ini}/${fin}&details=${encodeURIComponent(desc+' — Estudio Jurídico Magnum')}&reminder=1440&reminder=60`,'_blank');showToast('Abriendo Google Calendar...');}
 function renderHonorarios(o,col){const h=o.honorarios,esEst=col==='est';const fmt=n=>'$'+Number(n).toLocaleString('es-AR',{minimumFractionDigits:2,maximumFractionDigits:2});if(h&&h.guardado){const m=h.monto||0;return`<div class="hon-saved"><div class="hon-saved-titulo">Convenio registrado · ${h.fecha||''}</div><div style="font-size:12px;margin-bottom:.7rem;line-height:1.7"><strong>Cálculo:</strong> ${h.tipoCalculo==='pct'?'Porcentaje '+h.porcentaje+'% sobre acuerdo de $'+Number(h.montoAcuerdo||0).toLocaleString('es-AR'):'Monto fijo'}<br><strong>Total honorarios:</strong> ${fmt(m)}<br><strong>Regulación judicial:</strong> ${h.incluye_regulacion==='si'?'Incluida en el acuerdo':'Aparte — a determinar por el juez'}${h.notas?'<br><strong>Notas:</strong> '+h.notas:''}</div><div class="hon-dist"><div class="hon-parte"><div class="hon-pct">50%</div><div class="hon-lbl">Fondo del estudio</div><div class="hon-monto">${fmt(m*.5)}</div></div><div class="hon-parte"><div class="hon-pct">25%</div><div class="hon-lbl">Responsable</div><div class="hon-monto">${fmt(m*.25)}</div></div><div class="hon-parte"><div class="hon-pct">25%</div><div class="hon-lbl">${esEst?'Colaborador':'Abogado'}</div><div class="hon-monto">${fmt(m*.25)}</div></div></div><button onclick="editarHon('${o.id}','${col}')" style="margin-top:.8rem;font-size:11px;padding:6px 14px;border:0.5px solid #d0cec8;background:transparent;cursor:pointer;font-family:var(--sans)">Modificar convenio</button></div>`;}return`<div class="hon-box"><div class="hon-titulo">Registrar convenio de honorarios</div><div class="hon-form"><label>Tipo de cálculo</label><select id="ht-${o.id}" onchange="calcHon('${o.id}','${col}')"><option value="pct">Porcentaje del monto total del acuerdo</option><option value="fijo">Monto fijo</option></select><div id="hpr-${o.id}"><label>Porcentaje acordado (%)</label><input type="number" id="hp-${o.id}" min="1" max="100" value="${esEst?25:10}" oninput="calcHon('${o.id}','${col}')" placeholder="Ej: 25"><label>Monto total del acuerdo ($)</label><input type="number" id="ha-${o.id}" min="0" oninput="calcHon('${o.id}','${col}')" placeholder="Ej: 1000000"></div><div id="hfr-${o.id}" style="display:none"><label>Monto de honorarios ($)</label><input type="number" id="hf-${o.id}" min="0" oninput="calcHon('${o.id}','${col}')" placeholder="Ej: 250000"></div><label>Regulación judicial</label><select id="hr-${o.id}"><option value="incluida">Incluida en el acuerdo (honorarios totales)</option><option value="aparte">Aparte — se suma lo que regule el juez</option></select><label>Notas adicionales</label><input type="text" id="hn-${o.id}" placeholder="Ej: Acuerdo firmado el 15/04/2025..."></div><div id="hprev-${o.id}" style="margin-top:.8rem"></div><button onclick="guardarHon('${o.id}','${col}')" style="margin-top:.8rem;width:100%;padding:9px;background:var(--black);color:white;font-family:var(--sans);font-size:12px;font-weight:500;border:none;cursor:pointer">Guardar convenio</button></div>`;}
 function calcHon(id,col){const tipo=document.getElementById('ht-'+id)?.value;if(!tipo)return;document.getElementById('hpr-'+id).style.display=tipo==='fijo'?'none':'block';document.getElementById('hfr-'+id).style.display=tipo==='fijo'?'block':'none';let m=0;if(tipo==='pct'){const p=parseFloat(document.getElementById('hp-'+id)?.value)||0,ac=parseFloat(document.getElementById('ha-'+id)?.value)||0;m=ac*p/100;}else{m=parseFloat(document.getElementById('hf-'+id)?.value)||0;}const prev=document.getElementById('hprev-'+id);if(!prev)return;if(!m){prev.innerHTML='';return;}const fmt=n=>'$'+Number(n).toLocaleString('es-AR',{minimumFractionDigits:2,maximumFractionDigits:2});const esEst=col==='est';prev.innerHTML=`<div class="hon-dist"><div class="hon-parte"><div class="hon-pct">50%</div><div class="hon-lbl">Fondo estudio</div><div class="hon-monto">${fmt(m*.5)}</div></div><div class="hon-parte"><div class="hon-pct">25%</div><div class="hon-lbl">Responsable</div><div class="hon-monto">${fmt(m*.25)}</div></div><div class="hon-parte"><div class="hon-pct">25%</div><div class="hon-lbl">${esEst?'Colaborador':'Abogado'}</div><div class="hon-monto">${fmt(m*.25)}</div></div></div><div style="font-size:11px;color:var(--gd);margin-top:.5rem;text-align:center">Total honorarios: ${fmt(m)}</div>`;}
 async function guardarHon(id,col){const o=lista(col).find(x=>x.id===id);if(!o)return;const tipo=document.getElementById('ht-'+id).value;let monto=0,porcentaje=null,montoAcuerdo=null;if(tipo==='pct'){porcentaje=parseFloat(document.getElementById('hp-'+id).value)||0;montoAcuerdo=parseFloat(document.getElementById('ha-'+id).value)||0;monto=montoAcuerdo*porcentaje/100;}else{monto=parseFloat(document.getElementById('hf-'+id).value)||0;}if(!monto){showToast('Ingresá un monto válido');return;}const incluye_regulacion=document.getElementById('hr-'+id).value==='incluida'?'si':'no';const notas=document.getElementById('hn-'+id).value.trim();const honorarios={guardado:true,tipoCalculo:tipo,monto,porcentaje,montoAcuerdo,incluye_regulacion,notas,fecha:nowStr()};const hist=[...(o.historia||[]),{fecha:nowStr(),quien:'Sistema',texto:'Convenio de honorarios registrado. Total: $'+monto.toLocaleString('es-AR'),tipo:'mov'}];try{await db.collection(colRef(col)).doc(id).update({honorarios,historia:hist,actualizadoEn:firebase.firestore.FieldValue.serverTimestamp()});showToast('Convenio guardado');setTimeout(()=>openDet(id,col),300);}catch(e){showToast('Error: '+e.message);}}
@@ -325,7 +325,7 @@ function closeDet(){document.getElementById('detalle-bg').classList.remove('open
 document.getElementById('modal-bg').addEventListener('click',function(e){if(e.target===this)closeModal();});
 document.getElementById('detalle-bg').addEventListener('click',function(e){if(e.target===this)closeDet();});
 document.getElementById('confirm-bg').addEventListener('click',function(e){if(e.target===this)this.classList.remove('open');});
-window.addEventListener('load',()=>{if(sessionStorage.getItem('magnun-auth')==='ok')mostrarGestor();if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});});
+window.addEventListener('load',()=>{if(sessionStorage.getItem('magnum-auth')==='ok')mostrarGestor();if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});});
 </script>
 </body>
 </html>

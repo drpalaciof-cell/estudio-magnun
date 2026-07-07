@@ -161,7 +161,8 @@
     .grp-head:first-child{border-top:none}
     .grp-head .g-name{font-family:var(--display);font-size:1rem;font-weight:600}
     .grp-head .g-count{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
-    table{width:100%;border-collapse:collapse}
+    .tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+    table{width:100%;min-width:680px;border-collapse:collapse}
     thead th{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--faint);font-weight:600;text-align:left;
       padding:.8rem 1.3rem;border-bottom:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02)}
     tbody tr{cursor:pointer;transition:background .13s;border-bottom:1px solid rgba(255,255,255,.05)}
@@ -328,10 +329,29 @@
     .rpop-btn.post:hover{border-color:var(--warn);color:var(--warn)}
     .rpop-btn.del:hover{border-color:var(--signal);color:var(--signal)}
 
+    @media(max-width:760px){
+      .head{flex-direction:column;align-items:stretch;gap:1rem}
+      .head>div{min-width:0}
+      .head .btn.primary{width:100%}
+      #fbtxt{display:none}
+      .top-right{gap:.7rem}
+      .toolbar .search{flex:1 1 100%}
+      .toolbar .sel{flex:1 1 45%;min-width:0}
+    }
     @media(max-width:640px){
-      .stats{grid-template-columns:1fr}
-      thead th:nth-child(3),tbody td:nth-child(3),thead th:nth-child(6),tbody td:nth-child(6){display:none}
+      .wrap{padding-left:1rem;padding-right:1rem;padding-top:1.3rem}
+      .stats{grid-template-columns:repeat(3,1fr);gap:.5rem;margin-bottom:1.4rem}
+      .stat{padding:.85rem .6rem;border-radius:14px}
+      .stat-n{font-size:1.5rem}
+      .stat-l{font-size:8px;letter-spacing:.05em;margin-top:.3rem}
+      thead th,tbody td{padding:.7rem .85rem}
+      .c-car{max-width:220px}
       .modal{padding:1.6rem 1.3rem}
+      .det-inner{padding:1.4rem 1.1rem 3rem}
+    }
+    @media(max-width:400px){
+      .brand-sub{display:none}
+      .stat-n{font-size:1.35rem}
     }
   </style>
 </head>
@@ -595,7 +615,7 @@ function fila(o){
 }
 function tablaHTML(arr){
   if(!arr.length)return'<div class="empty"><div class="e-mark">∅</div><p>No hay causas que coincidan.</p></div>';
-  return `<table><thead><tr><th>Exp.</th><th>Carátula</th><th>Cliente</th><th>Tipo</th><th>Estado</th><th>Último movimiento</th></tr></thead><tbody>${arr.map(fila).join('')}</tbody></table>`;
+  return `<div class="tscroll"><table><thead><tr><th>Exp.</th><th>Carátula</th><th>Cliente</th><th>Tipo</th><th>Estado</th><th>Último movimiento</th></tr></thead><tbody>${arr.map(fila).join('')}</tbody></table></div>`;
 }
 function render(){
   const arr=filtrar();

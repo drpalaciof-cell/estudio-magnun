@@ -3,170 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Estudio Jurídico Magnum | Formosa, Argentina</title>
-  <meta name="description" content="Estudio Jurídico Magnum, Formosa. Especialistas en Derecho Penal, Civil, Laboral, Comercial y de Familia. Saavedra 248 Altos, Oficina 14.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <title>Mis Causas</title>
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#09090a">
+  <link rel="icon" href="logo-fp.jpg">
+  <script>location.replace('mis-causas.html');</script>
+  <meta http-equiv="refresh" content="0; url=mis-causas.html">
   <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    :root{--black:#0a0a0a;--white:#fafafa;--gl:#f2f0eb;--gm:#c8c6c0;--gd:#4a4845;--serif:'Playfair Display',Georgia,serif;--sans:'DM Sans',sans-serif;}
-    body{font-family:var(--sans);background:var(--white);color:var(--black);overflow-x:hidden}
-    nav{position:sticky;top:0;z-index:200;background:rgba(250,250,250,0.97);backdrop-filter:blur(6px);border-bottom:0.5px solid #ddd;padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:58px}
-    .logo-wrap{display:flex;flex-direction:column}
-    .logo-main{font-family:var(--serif);font-size:19px;font-weight:700;letter-spacing:0.06em;color:var(--black);line-height:1}
-    .logo-sub{font-size:9px;font-weight:400;letter-spacing:0.2em;color:var(--gd);text-transform:uppercase;margin-top:2px}
-    .nav-links{display:flex;gap:2rem;list-style:none}
-    .nav-links a{font-size:12px;color:var(--gd);text-decoration:none;letter-spacing:.05em;transition:color .2s}
-    .nav-links a:hover{color:var(--black)}
-    .nav-cta{font-size:12px;font-weight:500;padding:8px 18px;background:var(--black);color:var(--white);border:none;cursor:pointer;font-family:var(--sans);letter-spacing:.05em}
-    .nav-cta:hover{opacity:.8}
-    /* HERO */
-    .hero{min-height:88vh;display:flex;align-items:center;background:var(--black);padding:5rem 3.5rem}
-    .htag{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#777;margin-bottom:1.8rem}
-    .htitle{font-family:var(--serif);font-size:clamp(2.4rem,4vw,4rem);line-height:1.1;color:var(--white);margin-bottom:1.4rem;font-weight:700;max-width:700px}
-    .htitle em{font-style:italic;color:#aaa}
-    .hsub{font-size:15px;line-height:1.75;color:#777;max-width:500px;margin-bottom:2.5rem;font-weight:300}
-    .hbtns{display:flex;gap:.8rem;flex-wrap:wrap}
-    .hbtn1{background:var(--white);color:var(--black);padding:12px 28px;font-size:12px;font-weight:500;border:none;cursor:pointer;font-family:var(--sans)}
-    .hbtn1:hover{opacity:.85}
-    .hbtn2{background:transparent;color:var(--white);padding:11px 28px;font-size:12px;border:0.5px solid #444;cursor:pointer;font-family:var(--sans)}
-    .hbtn2:hover{border-color:#888}
-    /* AREAS */
-    .areas-sec{background:var(--gl);padding:4.5rem 3.5rem}
-    .stag{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gd);margin-bottom:.8rem;font-weight:500}
-    .stitle{font-family:var(--serif);font-size:clamp(1.7rem,2.8vw,2.4rem);font-weight:700;margin-bottom:2.5rem}
-    .agrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:1px;background:#ccc}
-    .acard{background:var(--white);padding:1.8rem 1.4rem;transition:background .25s}
-    .acard:hover{background:var(--black)}.acard:hover .aico,.acard:hover .aname,.acard:hover .adesc{color:var(--white)}
-    .aico{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gd);margin-bottom:.9rem;font-weight:500;transition:color .25s}
-    .aname{font-family:var(--serif);font-size:1.15rem;font-weight:700;margin-bottom:.4rem;transition:color .25s}
-    .adesc{font-size:12px;line-height:1.6;color:var(--gd);transition:color .25s;font-weight:300}
-    /* TEAM */
-    .team-sec{padding:4.5rem 3.5rem;background:var(--white)}
-    .tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:1.2rem;margin-top:2rem}
-    .tcard{border:0.5px solid #e0ddd7;overflow:hidden}
-    .tavatar{height:160px;background:var(--gl);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.8rem;font-weight:700;color:var(--gd)}
-    .tinfo{padding:.9rem}.tname{font-weight:500;font-size:13px;margin-bottom:2px;line-height:1.3}.tmp{font-size:10px;color:#aaa}
-    /* PROCESO */
-    .proceso-sec{background:var(--black);color:var(--white);padding:4.5rem 3.5rem}
-    .proceso-sec .stag{color:#555}.proceso-sec .stitle{color:var(--white)}
-    .pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:1px;background:#1a1a1a;margin-top:2.5rem}
-    .pstep{background:var(--black);padding:1.8rem 1.4rem}
-    .pnum{font-family:var(--serif);font-size:2.2rem;font-weight:700;color:#222;line-height:1;margin-bottom:.9rem}
-    .ptitle{font-size:13px;font-weight:500;margin-bottom:.4rem}.pdesc{font-size:11px;line-height:1.65;color:#666;font-weight:300}
-    /* CONTACTO */
-    .contacto-sec{background:var(--gl);padding:4.5rem 3.5rem;display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start}
-    .ci h2{font-family:var(--serif);font-size:1.9rem;font-weight:700;margin-bottom:.9rem}
-    .ci p{font-size:13px;line-height:1.7;color:var(--gd);margin-bottom:1.8rem;font-weight:300}
-    .cdato{margin-bottom:1.1rem;padding-bottom:1.1rem;border-bottom:0.5px solid #ddd}.cdato:last-child{border-bottom:none}
-    .dlbl{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gd);font-weight:500;margin-bottom:2px}.dval{font-size:13px}
-    .cform{background:var(--white);padding:2.2rem;border:0.5px solid #ddd}
-    .frow{margin-bottom:1rem}
-    .frow label{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gd);margin-bottom:5px;font-weight:500}
-    .frow input,.frow select,.frow textarea{width:100%;padding:9px 11px;background:var(--gl);border:0.5px solid #d0cec8;font-family:var(--sans);font-size:12px;outline:none;color:var(--black)}
-    .frow input:focus,.frow select:focus,.frow textarea:focus{border-color:var(--black)}
-    .frow textarea{resize:vertical;min-height:80px}
-    .fsub{width:100%;padding:12px;background:var(--black);color:var(--white);font-family:var(--sans);font-size:12px;font-weight:500;border:none;cursor:pointer;text-transform:uppercase}
-    .fsub:hover{opacity:.8}
-    /* FOOTER */
-    .footer{background:var(--black);padding:1.8rem 3.5rem;display:flex;justify-content:space-between;align-items:center;border-top:0.5px solid #1a1a1a}
-    .flogo{font-family:var(--serif);font-size:14px;color:var(--white);font-weight:700;letter-spacing:.07em}
-    .fcopy{font-size:11px;color:#444;letter-spacing:.06em}
-    .flinks a{font-size:11px;color:#444;text-decoration:none;margin-left:1.2rem}
-    @media(max-width:768px){.hero{padding:4rem 2rem}.contacto-sec{grid-template-columns:1fr}.nav-links{display:none}}
+    html,body{height:100%;margin:0}
+    body{background:#09090a;color:#a7a7ad;font-family:system-ui,sans-serif;display:flex;align-items:center;justify-content:center}
+    a{color:#f4f4f5}
   </style>
 </head>
 <body>
-
-<nav>
-  <div class="logo-wrap">
-    <div class="logo-main">MAGNUM</div>
-    <div class="logo-sub">Estudio Jurídico</div>
-  </div>
-  <ul class="nav-links">
-    <li><a href="#areas">Áreas</a></li>
-    <li><a href="#equipo">Equipo</a></li>
-    <li><a href="#proceso">Proceso</a></li>
-    <li><a href="#contacto">Contacto</a></li>
-  </ul>
-  <button class="nav-cta" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Consulta sin cargo</button>
-</nav>
-
-<section class="hero">
-  <div>
-    <div class="htag">Estudio Jurídico · Formosa, Argentina</div>
-    <h1 class="htitle">Soluciones legales <em>de excelencia</em> para cada caso</h1>
-    <p class="hsub">Representamos a personas y empresas con compromiso, precisión y estrategia jurídica en todas las ramas del derecho.</p>
-    <div class="hbtns">
-      <button class="hbtn1" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Consulta sin cargo</button>
-      <button class="hbtn2" onclick="document.getElementById('areas').scrollIntoView({behavior:'smooth'})">Ver servicios</button>
-    </div>
-  </div>
-</section>
-
-<section class="areas-sec" id="areas">
-  <div class="stag">Servicios</div>
-  <div class="stitle">Nuestras áreas de práctica</div>
-  <div class="agrid">
-    <div class="acard"><div class="aico">01</div><div class="aname">Derecho Penal</div><div class="adesc">Defensa y representación en causas penales, medidas cautelares, recursos y apelaciones.</div></div>
-    <div class="acard"><div class="aico">02</div><div class="aname">Derecho Civil</div><div class="adesc">Contratos, responsabilidad civil, sucesiones, derechos reales y litigios patrimoniales.</div></div>
-    <div class="acard"><div class="aico">03</div><div class="aname">Derecho Laboral</div><div class="adesc">Relaciones de trabajo, despidos, accidentes laborales, reclamos ante SECLO y juicio oral.</div></div>
-    <div class="acard"><div class="aico">04</div><div class="aname">Derecho Comercial</div><div class="adesc">Sociedades, contratos comerciales, concursos, quiebras y negociación empresarial.</div></div>
-    <div class="acard"><div class="aico">05</div><div class="aname">Derecho de Familia</div><div class="adesc">Divorcios, alimentos, régimen de comunicación, adopción, violencia familiar y tutelas.</div></div>
-  </div>
-</section>
-
-<section class="team-sec" id="equipo">
-  <div class="stag">El Equipo</div>
-  <div class="stitle">Nuestro equipo</div>
-  <div class="tgrid">
-    <div class="tcard"><div class="tavatar">ANR</div><div class="tinfo"><div class="tname">Dr. Alejandro N. Daniel Rojas</div><div class="tmp">MP 4531</div></div></div>
-    <div class="tcard"><div class="tavatar">EIF</div><div class="tinfo"><div class="tname">Dr. Edgardo Ignacio Flecha</div><div class="tmp">MP 4640</div></div></div>
-    <div class="tcard"><div class="tavatar">FMP</div><div class="tinfo"><div class="tname">Dr. Facundo Martin Palacio</div><div class="tmp">MP 4730</div></div></div>
-    <div class="tcard"><div class="tavatar">PSS</div><div class="tinfo"><div class="tname">Dr. Pablo Santiago Servín</div><div class="tmp">MP 4736</div></div></div>
-    <div class="tcard"><div class="tavatar">JPS</div><div class="tinfo"><div class="tname">Dr. Juan Pablo Sánchez</div><div class="tmp">MP 4482</div></div></div>
-    <div class="tcard"><div class="tavatar">VG</div><div class="tinfo"><div class="tname">Dr. Víctor Giménez</div><div class="tmp">Sin matrícula</div></div></div>
-  </div>
-</section>
-
-<section class="proceso-sec" id="proceso">
-  <div class="stag">Metodología</div>
-  <div class="stitle">Cómo trabajamos</div>
-  <div class="pgrid">
-    <div class="pstep"><div class="pnum">01</div><div class="ptitle">Consulta inicial</div><div class="pdesc">Analizamos tu caso gratuitamente y evaluamos la estrategia más adecuada.</div></div>
-    <div class="pstep"><div class="pnum">02</div><div class="ptitle">Diagnóstico jurídico</div><div class="pdesc">Elaboramos un informe con opciones, plazos y estimación de costos.</div></div>
-    <div class="pstep"><div class="pnum">03</div><div class="ptitle">Acuerdo de honorarios</div><div class="pdesc">Transparencia total antes de iniciar cualquier acción legal.</div></div>
-    <div class="pstep"><div class="pnum">04</div><div class="ptitle">Gestión activa</div><div class="pdesc">Seguimiento con informes periódicos y acceso permanente a tu abogado.</div></div>
-    <div class="pstep"><div class="pnum">05</div><div class="ptitle">Resolución</div><div class="pdesc">Buscamos la solución más favorable: acuerdo, sentencia o mediación.</div></div>
-  </div>
-</section>
-
-<section class="contacto-sec" id="contacto">
-  <div class="ci">
-    <div class="stag">Contacto</div>
-    <h2>Consultanos sin cargo</h2>
-    <p>Estamos disponibles para orientarte. La primera consulta es gratuita y sin compromiso.</p>
-    <div class="cdato"><div class="dlbl">Dirección</div><div class="dval">Saavedra 248 Altos, Oficina 14, Formosa</div></div>
-    <div class="cdato"><div class="dlbl">WhatsApp</div><div class="dval">+54 9 370 000-0000</div></div>
-    <div class="cdato"><div class="dlbl">Email</div><div class="dval">contacto@estudiomagnum.com.ar</div></div>
-    <div class="cdato"><div class="dlbl">Horarios</div><div class="dval">Lun–Vie 8:00 a 18:00 hs</div></div>
-  </div>
-  <div class="cform">
-    <div class="frow"><label>Nombre completo</label><input type="text" placeholder="Tu nombre y apellido"></div>
-    <div class="frow"><label>Teléfono / WhatsApp</label><input type="text" placeholder="+54 9 ..."></div>
-    <div class="frow"><label>Área de consulta</label>
-      <select><option>Seleccioná un área</option><option>Derecho Penal</option><option>Derecho Civil</option><option>Derecho Laboral</option><option>Derecho Comercial</option><option>Derecho de Familia</option></select>
-    </div>
-    <div class="frow"><label>Tu consulta</label><textarea placeholder="Describí brevemente tu situación..."></textarea></div>
-    <button class="fsub" onclick="this.textContent='¡Enviado! Te contactamos pronto.';this.style.background='#2a2a2a'">Enviar consulta</button>
-  </div>
-</section>
-
-<footer class="footer">
-  <div class="flogo">MAGNUM</div>
-  <div class="fcopy">© 2025 Estudio Jurídico Magnum · Formosa, Argentina</div>
-  <div class="flinks"><a href="#">Privacidad</a><a href="#">Términos</a></div>
-</footer>
-
+  <p>Redirigiendo… si no ocurre, <a href="mis-causas.html">entrá acá</a>.</p>
 </body>
 </html>

@@ -230,7 +230,8 @@
     .item .grow{flex:1;min-width:0}
     .doc-ico{flex-shrink:0;width:38px;height:38px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.14);color:var(--chrome-2);display:flex;align-items:center;justify-content:center;font-size:9.5px;font-weight:700;letter-spacing:.02em;box-shadow:inset 0 1px 0 rgba(255,255,255,.2)}
     .doc-name{font-size:13px;font-weight:500;word-break:break-word}
-    .doc-meta{font-size:11px;color:var(--faint);margin-top:2px}
+    .doc-meta{font-size:11px;color:var(--faint);margin-top:3px}
+    .doc-cat{display:inline-block;font-size:8.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:2px 7px;border-radius:6px;background:rgba(95,224,138,.13);color:#8fe6b0;border:1px solid rgba(95,224,138,.24);margin-right:6px;vertical-align:middle}
     .doc-acts{display:flex;gap:.3rem;flex-shrink:0}
     .icobtn{font-size:11px;font-weight:600;padding:6px 11px;border-radius:9px;cursor:pointer;text-decoration:none;color:var(--soft);
       background:var(--gbtn);border:var(--gbtn-brd);box-shadow:var(--gbtn-sh);transition:all .16s}
@@ -510,6 +511,7 @@ const fbCfg={apiKey:"AIzaSyBk7qvN9xWPtBsfedNIGmEPOGALfTs7yak",authDomain:"estudi
 const TIPOS=['Daños y Perjuicios','Ejecutivo','Excarcelación','Eximición','Despido','ART','Accidentes','Seguros','Federal','Penal','Ejecución Penal','Alimentos','Tutela','Régimen de Comunicación','Divorcio','Sucesión','Previsional','Estafa','Laboral'];
 const ESTADOS=['En trámite','Esperando respuesta de juzgado','Presentación de escrito','Presentación de cédula','Esperando libramiento de oficio','Presentación de oficio','Esperando informe especial','Con resolución','En apelación','Archivado'];
 const TIPOS_MOV=['Se agregó documental','Se agregó proveído','Movimiento / gestión'];
+const DOC_CATS=['Documental','Oficio','Escrito','Cédula','Proveído','Copia','Imagen / Foto','Otro'];
 const BCLS={'En trámite':'b-tramite','Esperando respuesta de juzgado':'b-esperando','Presentación de escrito':'b-presentacion','Presentación de cédula':'b-presentacion','Esperando libramiento de oficio':'b-oficio','Presentación de oficio':'b-oficio','Esperando informe especial':'b-informe','Con resolución':'b-resolucion','En apelación':'b-apelacion','Archivado':'b-archivado'};
 const MESES=['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC'];
 
@@ -721,13 +723,16 @@ function openDet(id){
         <div class="sec"><span class="sec-t">Documentales <span>· ${docs.length}</span></span></div>
         ${docs.length?docs.map((d,i)=>`<div class="item">
           <div class="doc-ico">${extIco(d.nombre)}</div>
-          <div class="grow"><div class="doc-name">${esc(d.nombre)}</div><div class="doc-meta tnum">${esc(d.fecha)}</div></div>
+          <div class="grow"><div class="doc-name">${esc(d.nombre)}</div><div class="doc-meta">${d.categoria?`<span class="doc-cat">${esc(d.categoria)}</span>`:''}<span class="tnum">${esc(d.fecha)}</span></div></div>
           <div class="doc-acts"><a class="icobtn" href="${d.url}" target="_blank" rel="noopener">Ver</a><a class="icobtn" href="${d.url}" download="${esc(d.nombre)}">↓</a><button class="icobtn red" onclick="elimDoc('${o.id}',${i})">✕</button></div>
         </div>`).join(''):'<div class="muted">Sin documentales.</div>'}
         <div class="addbox">
           <div class="addbox-t">Cargar documental</div>
-          <div class="fld"><label>Descripción del documento</label><input class="in" id="dd-${o.id}" placeholder="Ej: Escrito de demanda, Proveído…"></div>
-          <div class="upload"><input type="file" id="fi-${o.id}" multiple onchange="subirArch('${o.id}',this)"><span class="upload-lbl">＋ Seleccionar archivo(s) — PDF, imagen, Word…</span></div>
+          <div class="g2">
+            <div class="fld"><label>Tipo de documento</label><select class="se" id="dc-${o.id}">${DOC_CATS.map(c=>`<option>${c}</option>`).join('')}</select></div>
+            <div class="fld"><label>Descripción</label><input class="in" id="dd-${o.id}" placeholder="Ej: Demanda, oficio al banco…"></div>
+          </div>
+          <div class="upload"><input type="file" id="fi-${o.id}" multiple onchange="subirArch('${o.id}',this)"><span class="upload-lbl">＋ Seleccionar — PDF, Word, imagen o foto</span></div>
           <div class="upload-prog" id="up-${o.id}"></div>
         </div>
 
@@ -768,6 +773,7 @@ async function regMov(id){
 async function subirArch(id,input,desdeMov=false){
   const files=Array.from(input.files);if(!files.length)return;
   const desc=(get((desdeMov?'ddm-':'dd-')+id)?.value||'').trim();
+  const categoria=desdeMov?(get('dt-'+id)?.value==='Se agregó proveído'?'Proveído':'Documental'):(get('dc-'+id)?.value||'Documental');
   const prog=get((desdeMov?'upm-':'up-')+id);
   if(prog)prog.textContent='Subiendo '+files.length+' archivo(s)…';
   const o=find(id);if(!o)return;
@@ -777,7 +783,7 @@ async function subirArch(id,input,desdeMov=false){
       const fd=new FormData();fd.append('file',f);fd.append('upload_preset',CLD_PRESET);fd.append('resource_type','auto');
       const res=await fetch(`https://api.cloudinary.com/v1_1/${CLD_CLOUD}/auto/upload`,{method:'POST',body:fd});
       const data=await res.json();
-      if(data.secure_url){const nom=desc||f.name;nd.push({nombre:nom,url:data.secure_url,fecha:nowStr(),tipo:f.type});nh.push({fecha:nowStr(),texto:'Documental cargada: '+nom,tipo:'doc'});sub++;}
+      if(data.secure_url){const nom=desc||f.name;nd.push({nombre:nom,url:data.secure_url,fecha:nowStr(),tipo:f.type,categoria});nh.push({fecha:nowStr(),texto:'Cargó '+categoria+': '+nom,tipo:'doc'});sub++;}
     }catch(e){showToast('Error al subir '+f.name);}
   }
   input.value='';

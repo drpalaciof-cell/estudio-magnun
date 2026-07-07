@@ -22,19 +22,20 @@
       --line:#232326;--line-2:#323237;--line-3:#3f3f45;
       --white:#f3f3f5;--soft:#a5a5ac;--faint:#6b6b73;--dim:#47474d;
       --chrome-2:#c9c9cf;--chrome-3:#8a8a92;
-      --accent:#e7e7ea;--accent-soft:rgba(255,255,255,.06);
+      --accent:#5fe08a;--accent-soft:rgba(95,224,138,.14);
+      --green:#5fe08a;--green-br:#84f2a8;--green-glow:rgba(95,224,138,.55);--green-soft:rgba(95,224,138,.15);
       --signal:#e0685f;--signal-soft:rgba(224,104,95,.12);
       --ok:#63b98a;--warn:#d3a24f;
       --display:'Sora',system-ui,sans-serif;--sans:'Manrope',system-ui,sans-serif;
       /* liquid glass */
-      --glass:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.016));
-      --glass-brd:1px solid rgba(255,255,255,.10);
-      --glass-sh:inset 0 1px 0 rgba(255,255,255,.16),inset 0 0 0 1px rgba(255,255,255,.015),0 22px 60px rgba(0,0,0,.5);
-      --gbtn:linear-gradient(180deg,rgba(255,255,255,.15),rgba(255,255,255,0) 42%),linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
-      --gbtn-brd:1px solid rgba(255,255,255,.14);
-      --gbtn-sh:inset 0 1px 0 rgba(255,255,255,.34),inset 0 -6px 12px rgba(0,0,0,.26),0 6px 20px rgba(0,0,0,.42);
-      --gbtn-sh-h:inset 0 1px 0 rgba(255,255,255,.5),inset 0 -6px 14px rgba(0,0,0,.22),0 10px 28px rgba(0,0,0,.5);
-      --prim:linear-gradient(180deg,rgba(255,255,255,.9),rgba(255,255,255,0) 52%),linear-gradient(180deg,#f5f5f7,#cacad1);
+      --glass:linear-gradient(180deg,rgba(150,235,190,.06),rgba(255,255,255,.014));
+      --glass-brd:1px solid rgba(180,255,215,.12);
+      --glass-sh:inset 0 1px 0 rgba(255,255,255,.2),inset 0 0 0 1px rgba(160,255,205,.03),0 22px 60px rgba(0,0,0,.55);
+      --gbtn:radial-gradient(130% 85% at 50% -30%,rgba(255,255,255,.42),transparent 56%),linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,0) 46%),linear-gradient(180deg,rgba(170,240,200,.06),rgba(255,255,255,.02));
+      --gbtn-brd:1px solid rgba(190,255,220,.16);
+      --gbtn-sh:inset 0 1.5px 0 rgba(255,255,255,.5),inset 0 -8px 16px rgba(0,0,0,.3),0 8px 22px rgba(0,0,0,.5);
+      --gbtn-sh-h:inset 0 1.5px 0 rgba(255,255,255,.72),inset 0 -8px 18px rgba(0,0,0,.26),0 12px 30px rgba(0,0,0,.55),0 0 20px rgba(95,224,138,.2);
+      --prim:radial-gradient(120% 85% at 50% -15%,rgba(255,255,255,1),transparent 52%),linear-gradient(180deg,#f6f6f8,#c6c6ce);
       --prim-sh:inset 0 1px 1px rgba(255,255,255,.95),inset 0 -4px 9px rgba(0,0,0,.16),0 8px 26px rgba(0,0,0,.42);
       --prim-sh-h:inset 0 1px 1px rgba(255,255,255,1),inset 0 -4px 10px rgba(0,0,0,.12),0 14px 34px rgba(0,0,0,.5);
       --sh-lg:0 40px 100px rgba(0,0,0,.65);
@@ -43,11 +44,12 @@
     body{font-family:var(--sans);color:var(--white);font-weight:400;line-height:1.5;
       -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;
       background:
-        radial-gradient(42% 46% at 12% 8%,rgba(96,116,168,.13),transparent 62%),
-        radial-gradient(40% 40% at 88% 14%,rgba(150,150,172,.10),transparent 62%),
-        radial-gradient(55% 45% at 78% 96%,rgba(110,126,170,.10),transparent 60%),
-        radial-gradient(50% 40% at 20% 100%,rgba(150,140,170,.07),transparent 60%),
-        #09090a;
+        radial-gradient(46% 48% at 14% 8%,rgba(34,92,60,.26),transparent 62%),
+        radial-gradient(42% 42% at 86% 12%,rgba(46,110,74,.18),transparent 62%),
+        radial-gradient(28% 24% at 76% 28%,rgba(95,224,138,.11),transparent 60%),
+        radial-gradient(55% 48% at 82% 98%,rgba(40,120,80,.17),transparent 60%),
+        radial-gradient(48% 42% at 16% 100%,rgba(28,80,54,.16),transparent 60%),
+        #070f0b;
       background-attachment:fixed}
     body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.35;mix-blend-mode:screen;
       background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E")}
@@ -68,7 +70,7 @@
 
     /* ===== LOGIN ===== */
     .login-screen{position:relative;z-index:5;display:flex;align-items:center;justify-content:center;min-height:100vh;min-height:100dvh;padding:2rem;
-      background:radial-gradient(60% 46% at 50% 24%,rgba(120,140,190,.16),transparent 70%)}
+      background:radial-gradient(65% 50% at 50% 20%,rgba(40,120,80,.22),transparent 70%),radial-gradient(26% 22% at 50% 10%,rgba(95,224,138,.16),transparent 70%)}
     .login-box{position:relative;z-index:2;width:410px;max-width:100%;padding:2.8rem 2.6rem 2.4rem;border-radius:26px;
       background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02));backdrop-filter:blur(30px) saturate(1.4);-webkit-backdrop-filter:blur(30px) saturate(1.4);
       border:1px solid rgba(255,255,255,.12);box-shadow:inset 0 1px 0 rgba(255,255,255,.22),var(--sh-lg);text-align:center}
@@ -82,7 +84,7 @@
     .login-input{width:100%;padding:13px 15px;margin-bottom:1.1rem;background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.12);border-radius:12px;
       font-size:15px;color:var(--white);outline:none;transition:border-color .2s,box-shadow .2s;letter-spacing:.02em;
       box-shadow:inset 0 1px 2px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.04)}
-    .login-input:focus{border-color:rgba(255,255,255,.4);box-shadow:inset 0 1px 2px rgba(0,0,0,.4),0 0 0 3px rgba(255,255,255,.08)}
+    .login-input:focus{border-color:var(--green);box-shadow:inset 0 1px 2px rgba(0,0,0,.4),0 0 0 3px var(--green-soft),0 0 16px rgba(95,224,138,.28)}
     .login-btn{width:100%;margin-top:.6rem;padding:14px;border-radius:13px;border:1px solid rgba(255,255,255,.8);color:#0a0a0b;cursor:pointer;
       background:var(--prim);box-shadow:var(--prim-sh);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;transition:transform .13s,box-shadow .2s}
     .login-btn:hover{transform:translateY(-1px);box-shadow:var(--prim-sh-h)}
@@ -104,7 +106,7 @@
     .top-right{display:flex;align-items:center;gap:.9rem}
     .fbchip{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--soft);letter-spacing:.02em}
     .fbdot{width:6px;height:6px;border-radius:50%;background:#4a4a50;box-shadow:0 0 0 3px rgba(120,120,130,.12);transition:.3s}
-    .fbdot.ok{background:var(--ok);box-shadow:0 0 0 3px rgba(99,185,138,.16)}
+    .fbdot.ok{background:var(--green);box-shadow:0 0 0 3px rgba(95,224,138,.2),0 0 10px rgba(95,224,138,.65)}
     .fbdot.err{background:var(--signal);box-shadow:0 0 0 3px rgba(224,104,95,.16)}
     .iconbtn{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--soft);font-size:15px;
       background:var(--gbtn);border:var(--gbtn-brd);box-shadow:var(--gbtn-sh);transition:transform .15s,box-shadow .2s,color .2s}
@@ -117,7 +119,7 @@
     .wrap{max-width:1220px;margin:0 auto;padding:clamp(1.4rem,4vw,2.8rem) clamp(1.1rem,4vw,2.6rem) 5rem}
     .head{display:flex;align-items:flex-end;justify-content:space-between;gap:1.4rem;flex-wrap:wrap;margin-bottom:1.8rem}
     .head-kicker{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--faint);font-weight:600;margin-bottom:.6rem;display:flex;align-items:center;gap:.6rem}
-    .head-kicker::before{content:"";width:20px;height:1px;background:var(--line-2)}
+    .head-kicker::before{content:"";width:20px;height:1px;background:linear-gradient(90deg,var(--green),transparent);box-shadow:0 0 6px var(--green-glow)}
     .head-title{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,4.4vw,2.8rem);line-height:1;letter-spacing:-.02em}
     .btn{font-size:12.5px;font-weight:600;letter-spacing:.01em;padding:12px 20px;border-radius:13px;cursor:pointer;white-space:nowrap;
       background:var(--gbtn);border:var(--gbtn-brd);box-shadow:var(--gbtn-sh);color:var(--white);
@@ -142,7 +144,7 @@
       background:var(--glass);border:var(--glass-brd);backdrop-filter:blur(16px) saturate(1.3);-webkit-backdrop-filter:blur(16px) saturate(1.3);
       box-shadow:inset 0 1px 0 rgba(255,255,255,.1);transition:border-color .2s,box-shadow .2s}
     .search input::placeholder{color:var(--dim)}
-    .search input:focus{border-color:rgba(255,255,255,.28);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 0 0 3px rgba(255,255,255,.05)}
+    .search input:focus{border-color:var(--green);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 0 0 3px var(--green-soft),0 0 14px rgba(95,224,138,.2)}
     .search svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:15px;height:15px;stroke:var(--faint)}
     .sel{padding:12px 32px 12px 13px;border-radius:13px;font-size:13px;color:var(--soft);outline:none;cursor:pointer;appearance:none;
       background:var(--glass) ,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none' stroke='%236b6b73' stroke-width='1.6'%3E%3Cpath d='M1 1l4 4 4-4'/%3E%3C/svg%3E") no-repeat right 13px center;
@@ -265,7 +267,7 @@
     .in,.ta,.se{width:100%;padding:11px 13px;border-radius:11px;font-size:13px;color:var(--white);outline:none;
       background:rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.1);box-shadow:inset 0 1px 2px rgba(0,0,0,.35);transition:border-color .18s,box-shadow .18s}
     .in::placeholder,.ta::placeholder{color:var(--dim)}
-    .in:focus,.ta:focus,.se:focus{border-color:rgba(255,255,255,.35);box-shadow:inset 0 1px 2px rgba(0,0,0,.35),0 0 0 3px rgba(255,255,255,.05)}
+    .in:focus,.ta:focus,.se:focus{border-color:var(--green);box-shadow:inset 0 1px 2px rgba(0,0,0,.35),0 0 0 3px var(--green-soft),0 0 14px rgba(95,224,138,.22)}
     .in.req-miss,.se.req-miss{border-color:var(--signal);box-shadow:0 0 0 3px var(--signal-soft)}
     .ta{resize:vertical;min-height:64px;line-height:1.5}
     .se{appearance:none;background:rgba(0,0,0,.25) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none' stroke='%236b6b73' stroke-width='1.6'%3E%3Cpath d='M1 1l4 4 4-4'/%3E%3C/svg%3E") no-repeat right 12px center;cursor:pointer;padding-right:30px}
@@ -513,7 +515,7 @@ function firebaseCore(){
     db=firebase.firestore();
     // Credenciales (usuario/contraseña) — se leen antes del login
     db.collection('config').doc('acceso').onSnapshot(d=>{
-      if(d.exists&&d.data().usuario&&d.data().pass){CRED={usuario:d.data().usuario,pass:d.data().pass};localStorage.setItem('mc-cred',JSON.stringify(CRED));}
+      if(d.exists&&d.data().usuario&&d.data().pass){CRED={usuario:d.data().usuario,pass:d.data().pass};localStorage.setItem('mc-cred',JSON.stringify(CRED));const lu=get('login-user');if(lu&&get('login').style.display!=='none')lu.value=CRED.usuario;}
     },e=>{});
   }catch(e){setFb('err','Error');}
 }
@@ -853,8 +855,9 @@ setInterval(checkRecordatorios,300000);
 window.addEventListener('load',()=>{
   initSelects();
   firebaseCore();
+  get('login-user').value=CRED.usuario;
   if(sessionStorage.getItem('mc-auth')==='ok')mostrarApp();
-  else get('login-user').focus();
+  else get('login-pass').focus();
   if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 });
 </script>
